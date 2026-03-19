@@ -1,0 +1,130 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import Button from "../components/Button.astro";
+import Badge from "../components/Badge.astro";
+import Icon from "../components/Icon.astro";
+import { ReactTest } from "../components/ReactTest";
+---
+
+<Layout title="Design System | Con Hilo Depilo">
+  <main class="py-20">
+    <div class="container flex flex-col gap-20">
+      <SectionHeader 
+        title="Design System" 
+        subtitle="Referencia visual de los componentes atómicos y variantes del proyecto."
+      />
+
+      <!-- Buttons Section -->
+      <section class="flex flex-col gap-8">
+        <h3 class="text-xl font-bold border-b pb-2 uppercase tracking-wider text-brand-secondary">Buttons</h3>
+        
+        <div class="flex flex-col gap-12">
+          <!-- Variants -->
+          <div class="flex flex-col gap-4">
+            <p class="text-sm font-bold text-ui-text-muted uppercase tracking-widest">Variants</p>
+            <div class="flex flex-wrap gap-4 items-center">
+              <Button variant="primary">Primary Button</Button>
+              <Button variant="outline">Outline Button</Button>
+              <Button variant="ghost">Ghost Button</Button>
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="flex flex-col gap-4">
+            <p class="text-sm font-bold text-ui-text-muted uppercase tracking-widest">Sizes</p>
+            <div class="flex flex-wrap gap-4 items-center">
+              <Button size="sm">Small</Button>
+              <Button size="md">Medium (Default)</Button>
+              <Button size="lg">Large</Button>
+            </div>
+          </div>
+
+          <!-- As Link -->
+          <div class="flex flex-col gap-4">
+            <p class="text-sm font-bold text-ui-text-muted uppercase tracking-widest">As Link (Polymorphic)</p>
+            <div class="flex flex-wrap gap-4 items-center">
+              <Button href="/">Back to Home</Button>
+              <Button href="#servicios" variant="outline">Go to Anchor</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Badges Section -->
+      <section class="flex flex-col gap-8">
+        <h3 class="text-xl font-bold border-b pb-2 uppercase tracking-wider text-brand-secondary">Badges</h3>
+        
+        <div class="flex flex-wrap gap-4">
+          <Badge variant="primary">Primary Badge</Badge>
+          <Badge variant="secondary">Secondary Badge</Badge>
+        </div>
+      </section>
+
+      <!-- Section Headers Section -->
+      <section class="flex flex-col gap-8">
+        <h3 class="text-xl font-bold border-b pb-2 uppercase tracking-wider text-brand-secondary">Section Headers</h3>
+        
+        <div class="flex flex-col gap-12">
+          <div class="p-6 bg-white rounded-xl border border-brand-primary/10">
+            <SectionHeader 
+              title="Left Aligned Header" 
+              subtitle="This is the default alignment for section headers."
+            />
+          </div>
+          <div class="p-6 bg-white rounded-xl border border-brand-primary/10">
+            <SectionHeader 
+              title="Centered Header" 
+              subtitle="Perfect for hero sections or main landing page dividers."
+              centered={true}
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Icons Section -->
+      <section class="flex flex-col gap-8">
+        <h3 class="text-xl font-bold border-b pb-2 uppercase tracking-wider text-brand-secondary">Icons (Lucide)</h3>
+        
+        <div class="flex flex-wrap gap-8 p-8 bg-white rounded-xl border border-brand-primary/10 items-center justify-center">
+          <div class="flex flex-col items-center gap-2">
+            <Icon name="Tag" size={32} class="text-brand-primary" />
+            <span class="text-[10px] uppercase font-bold text-ui-text-muted">Tag</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <Icon name="Clock" size={32} class="text-brand-secondary" />
+            <span class="text-[10px] uppercase font-bold text-ui-text-muted">Clock</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <Icon name="CheckCircle" size={32} class="text-brand-accent" />
+            <span class="text-[10px] uppercase font-bold text-ui-text-muted">Check</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <Icon name="Instagram" size={32} />
+            <span class="text-[10px] uppercase font-bold text-ui-text-muted">Social</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <Icon name="ChevronRight" size={32} strokeWidth={3} />
+            <span class="text-[10px] uppercase font-bold text-ui-text-muted">Stroke 3</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- React Integration Section -->
+      <section class="flex flex-col gap-8">
+        <h3 class="text-xl font-bold border-b pb-2 uppercase tracking-wider text-brand-secondary">React Hydration Test</h3>
+        
+        <div class="max-w-md">
+          <ReactTest client:load />
+        </div>
+      </section>
+      
+      <div class="pt-10 border-t flex justify-center">
+        <Button variant="ghost" href="/">
+          <Icon name="ArrowLeft" size={18} class="mr-2" />
+          Volver a la Home
+        </Button>
+      </div>
+    </div>
+  </main>
+</Layout>

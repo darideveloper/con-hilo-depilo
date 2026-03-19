@@ -1,0 +1,9 @@
+{
+  "title": "Limpieza con Hilo",
+  "price": "15€",
+  "duration": "20 min",
+  "description": "Eliminación precisa del vello facial no deseado respetando la sensibilidad de la piel.",
+  "image": "/src/assets/images/limpieza-hilo.jpg",
+  "category": "threading",
+  "order": 2
+}
