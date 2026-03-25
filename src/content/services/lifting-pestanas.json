@@ -3,7 +3,7 @@
   "price": "45€",
   "duration": "60 min",
   "description": "Realza tu mirada de forma natural con un rizado perfecto desde la raíz.",
-  "image": "/src/assets/images/lifting-pestanas.jpg",
+  "image": "../../assets/images/lifting-pestanas.jpg",
   "category": "lashes",
   "order": 3
 }

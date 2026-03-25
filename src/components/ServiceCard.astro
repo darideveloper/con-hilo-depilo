@@ -10,7 +10,7 @@ interface Props {
   price?: string;
   duration?: string;
   description: string;
-  image: string;
+  image: ImageMetadata;
   category: string;
   class?: string;
 }
@@ -32,7 +32,6 @@ const { title, price, duration, description, image, category, class: className }
     <Image 
       src={image} 
       alt={title}
-      inferSize={true}
       class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
     />
   </div>
