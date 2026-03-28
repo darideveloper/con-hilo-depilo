@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import ServicesGrid from '../components/ServicesGrid.astro';
 import Button from '../components/Button.astro';
 import Icon from '../components/Icon.astro';
+import HeroImage from '../components/HeroImage.astro';
+import heroImage from '../assets/images/hero.png';
 ---
 
 <Layout>
@@ -52,15 +54,7 @@ import Icon from '../components/Icon.astro';
 						</div>
 					</div>
 
-					<div class="relative hidden lg:block">
-						<div class="absolute -inset-4 bg-brand-primary/20 rounded-2xl -rotate-3"></div>
-						<div class="relative aspect-[4/5] bg-brand-secondary/10 rounded-2xl overflow-hidden shadow-2xl">
-							<!-- Placeholder for hero image -->
-							<div class="absolute inset-0 flex items-center justify-center text-brand-secondary/30">
-								<Icon name="Image" size={64} />
-							</div>
-						</div>
-					</div>
+					<HeroImage variant="decorator" src={heroImage} alt="Imagen de hero" class="hidden lg:block" />
 				</div>
 			</div>
 		</section>
