@@ -4,7 +4,12 @@ import SectionHeader from "../components/SectionHeader.astro";
 import Button from "../components/Button.astro";
 import Badge from "../components/Badge.astro";
 import Icon from "../components/Icon.astro";
+import HeroImage from "../components/HeroImage.astro";
+import placeholderImg from "../assets/images/hero.png";
+import InfoCard from "../components/Infocard.astro";
+import { ReactIcon } from "../components/ReactIcon";
 import { ReactTest } from "../components/ReactTest";
+
 ---
 
 <Layout title="Design System | Con Hilo Depilo">
@@ -60,6 +65,75 @@ import { ReactTest } from "../components/ReactTest";
           <Badge variant="secondary">Secondary Badge</Badge>
         </div>
       </section>
+      <!-- Info Card Section -->
+<section class="flex flex-col gap-8">
+  <h3 class="text-xl font-bold border-b pb-2 uppercase tracking-wider text-brand-secondary">Info Card</h3>
+
+  <div class="grid grid-cols-3 gap-6">
+    <InfoCard
+      title="¿Qué esperar?"
+      text="Nuestra sesión comienza con un diagnóstico personalizado de visagismo para garantizar un resultado natural."
+      variant="primary"
+    >
+      <ReactIcon slot="icon" name="BsQuestionSquare" size={18} client:load />
+    </InfoCard>
+
+    <InfoCard
+      title="Cuidados Post"
+      text="Evitar el agua directa en las primeras 24h y aplicar nuestro sérum regenerador diario son pasos clave."
+      variant="primary"
+    >
+      <ReactIcon slot="icon" name="LuShieldCheck" size={18} client:load />
+    </InfoCard>
+
+    <InfoCard
+      title="Duración"
+      text="El tratamiento tiene una duración aproximada de 30 a 45 minutos dependiendo del área a tratar."
+      variant="primary"
+    >
+      <ReactIcon slot="icon" name="LuClock" size={18} client:load />
+    </InfoCard>
+  </div>
+</section>
+      <!-- Hero Image Section -->
+<section class="flex flex-col gap-8">
+  <h3 class="text-xl font-bold border-b pb-2 uppercase tracking-wider text-brand-secondary">Hero Image</h3>
+  
+  <div class="grid grid-cols-2 gap-12 max-w-2xl">
+    <!-- Decorator -->
+    <div class="flex flex-col gap-4">
+      <p class="text-sm font-bold text-ui-text-muted uppercase tracking-widest">Decorator</p>
+      <HeroImage
+        src={placeholderImg}
+        alt="Demo decorator"
+        title="Título opcional"
+        variant="decorator"
+      />
+    </div>
+
+    <!-- Basic -->
+    <div class="flex flex-col gap-4">
+      <p class="text-sm font-bold text-ui-text-muted uppercase tracking-widest">Basic</p>
+      <HeroImage
+        src={placeholderImg}
+        alt="Demo basic"
+        variant="basic"
+      />
+    </div>
+
+    <!-- As Link -->
+    <div class="flex flex-col gap-4">
+      <p class="text-sm font-bold text-ui-text-muted uppercase tracking-widest">With Link</p>
+      <HeroImage
+        src={placeholderImg}
+        alt="Demo with link"
+        title="Ver servicios"
+        href="/servicios"
+        variant="decorator"
+      />
+    </div>
+  </div>
+</section>
 
       <!-- Section Headers Section -->
       <section class="flex flex-col gap-8">
