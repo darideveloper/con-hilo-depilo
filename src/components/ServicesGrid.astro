@@ -2,8 +2,6 @@
 import { getCollection } from "astro:content";
 import ServiceCard from "./ServiceCard.astro";
 import SectionHeader from "./SectionHeader.astro";
-import Button from "./Button.astro";
-import Icon from "./Icon.astro";
 
 const services = await getCollection("services");
 const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
@@ -14,32 +12,20 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
   <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl"></div>
 
   <div class="container relative z-10">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+    <div class="flex flex-col items-center gap-4 mb-16">
       <SectionHeader 
         title="Nuestra Carta de Servicios" 
-        subtitle="Especialistas en la técnica coreana de depilación con hilo y tratamientos de estética avanzada."
-        class="max-w-xl"
+        centered={true}
       />
-      
-      <Button variant="ghost" class="hidden md:flex group">
-        Ver todos los servicios
-        <Icon name="ArrowRight" size={18} class="ml-2 transition-transform group-hover:translate-x-1" />
-      </Button>
+      <span class="w-16 h-0.5 bg-brand-primary rounded-full"></span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {sortedServices.map((service) => (
         <ServiceCard 
           {...service.data}
         />
       ))}
-    </div>
-
-    <div class="mt-12 md:hidden">
-      <Button variant="outline" class="w-full group">
-        Ver todos los servicios
-        <Icon name="ArrowRight" size={18} class="ml-2 transition-transform group-hover:translate-x-1" />
-      </Button>
     </div>
   </div>
 </section>
