@@ -26,6 +26,14 @@
   --font-size-body: 1rem;
   --font-size-caption: 0.875rem;
   --font-size-micro: 0.75rem;
+
+
+  --shadow-title: 0 1px 4px rgb(0 0 0 / 0.4);
+  --text-size-card-title: 1.0625rem;
+  --text-size-card-body:  0.9375rem;
+  --shadow-card:       0 1px 3px rgb(0 0 0 / 0.04), 0 4px 16px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 0.06), 0 8px 24px rgb(0 0 0 / 0.10);
+  --shadow-image:      0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
 @layer base {
@@ -82,4 +90,31 @@
   margin-inline: auto;
   padding-inline: 1.5rem;
   max-width: var(--width-container);
+}
+
+
+/* HeroImage */
+.hero-bg-outer,
+.hero-bg-inner {
+  rotate: -3deg;
+  will-change: rotate, translate;
+  backface-visibility: hidden;
+  transition:
+    rotate   0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    translate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-decorator:hover .hero-bg-outer,
+.hero-decorator:hover .hero-bg-inner {
+  rotate: 0deg;
+  translate: 8px -8px;
+}
+
+.hero-basic .hero-img {
+  will-change: transform;
+  transition: scale 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-basic:hover .hero-img {
+  scale: 1.06;
 }
