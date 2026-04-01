@@ -1,0 +1,96 @@
+---
+import { cn } from "../utils/cn";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  title: string;
+  text: string;
+  variant?: "primary" | "secondary" | "accent";
+  class?: string;
+}
+
+const {
+  title,
+  text,
+  variant = "primary",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const variants = {
+  primary:   "info-card--primary",
+  secondary: "info-card--secondary",
+  accent:    "info-card--accent",
+};
+---
+
+<div class={cn("info-card", variants[variant], className)} {...rest}>
+  <div class="info-card__header">
+    <span class="info-card__icon-wrapper">
+      <slot name="icon" />
+    </span>
+    <h3 class="info-card__title">{title}</h3>
+  </div>
+  <p class="info-card__text">{text}</p>
+</div>
+
+<style>
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 1.75rem;
+    border-radius: 1rem;
+    background: --color-ui-bg-light;
+    border-left: 3px solid transparent;
+    box-shadow:
+      0 1px 3px rgb(0 0 0 / 0.04),
+      0 4px 16px rgb(0 0 0 / 0.06);
+    transition: box-shadow 0.25s ease, translate 0.25s ease;
+  }
+
+  .info-card:hover {
+    box-shadow:
+      0 2px 6px rgb(0 0 0 / 0.06),
+      0 8px 24px rgb(0 0 0 / 0.1);
+    translate: 0 -2px;
+  }
+
+  .info-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .info-card__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .info-card__title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #2A2A2A;
+    margin: 0;
+  }
+
+  .info-card__text {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: #6B7280;
+    margin: 0;
+  }
+
+  .info-card--primary { border-left-color: #f3c6bf; }
+  .info-card--primary .info-card__icon-wrapper { color: #f3c6bf; }
+
+  .info-card--secondary { border-left-color: #C7B7A3; }
+  .info-card--secondary .info-card__icon-wrapper { color: #C7B7A3; }
+
+  .info-card--accent { border-left-color: #25D366; }
+  .info-card--accent .info-card__icon-wrapper { color: #25D366; }
+</style>
