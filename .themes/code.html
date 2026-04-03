@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#785651", secondary: "#6c5a58", "background-light": "#FFF9F6", "background-dark": "#201412", "text-main": "#2A2A2A", "on-primary-container": "#72514b", "inverse-primary": "#e8bcb5", "surface-tint": "#785651", "surface-container-highest": "#e9e1df", "tertiary-fixed": "#cce9df", background: "#fff8f6", "surface-variant": "#e9e1df", "on-tertiary": "#ffffff", "on-primary-fixed-variant": "#5e3f3a", "on-surface-variant": "#504442", "primary-fixed": "#ffdad4", "on-tertiary-fixed": "#05201a", "on-secondary": "#ffffff", "on-secondary-container": "#72605d", "surface-container-low": "#faf2f0", "on-secondary-fixed-variant": "#534340", "on-primary": "#ffffff", surface: "#fff8f6", tertiary: "#49645c", error: "#ba1a1a", "tertiary-fixed-dim": "#b0cdc3", "on-tertiary-fixed-variant": "#324c44", "surface-container": "#f5ecea", "inverse-surface": "#342f2f", "surface-bright": "#fff8f6", "on-surface": "#1e1b1a", "secondary-fixed-dim": "#d9c1be", "on-tertiary-container": "#445e57", "outline-variant": "#d4c3c0", "tertiary-container": "#bad7cd", "primary-fixed-dim": "#e8bcb5", outline: "#827472", "on-primary-fixed": "#2d1511", "on-secondary-fixed": "#251816", "on-error": "#ffffff", "secondary-fixed": "#f6ddd9", "surface-dim": "#e0d8d7", "on-background": "#1e1b1a", "surface-container-high": "#efe6e5", "surface-container-lowest": "#ffffff", "primary-container": "#f3c6bf", "inverse-on-surface": "#f8efed", "on-error-container": "#93000a", "error-container": "#ffdad6", "secondary-container": "#f6ddd9"}, fontFamily: {display: "Inter", headline: ["Inter"], body: ["Inter"], label: ["Inter"]}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-slate-100">
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 bg-background-light/80 backdrop-blur-md border-b border-primary/20 px-6 md:px-20 py-4">
+<div class="max-w-[1200px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-2"><img alt="Con Hilo Depilo Logo" class="h-12 w-auto object-contain" src="data:image/png;base64,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tsQs7IAZ2BIzsTGmYgomYLw1hvEyVmI5luMpPIqf4WHci/uwTPSlJyIiIrrqBdyP+/E90RpFRERERDSqiIiIiIhGFRERERHRqCIiIiIiGlVERERERKOKiIiIiGhUERERERGNKiIiIiKiUUVERERENKqIiIiIiEYVEREREdGoIiIiIiIaVUREREREo4qIiIiIaFQREREREY0qIiIiIqJRRUREREQ0qoiIiIiIRhURERER0agiIiIiIhpVRERERESjioiIiIhoVBERERERjSoiIiIiolFFRERERDSqiIiIiIhGFRERERHRqCIiIiIiGlVERERERKOKiIiIiGhUERERERGNKiIiIiKiUUVERERENKqIiIiIiEYVEREREdGoIiIiIiIaVfRvGM+JiIiIGDzPYVifevpXMBNDIiIiIgbLZBR96unfJPwEwyIiIiIGyzhM0qee/o3DZBERERHxKkV1U0RERESMXVNUVFT3IxERERFj149U1FPdUTgbe4mIiIgYW27G51Q0bnh4WEREREQ0p4iIiIiIRhURERER0agiIiIiIhpVRERERESjioiIiIhoVBERERERjSoiIiIiolFFRERERDSqiIiIiIhG/S8s7xx1kG4xTQAAAABJRU5ErkJggg=="/></div>
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="#">Tratamientos</a>
+<a class="hover:text-primary transition-colors" href="#">Cursos</a>
+<a class="hover:text-primary transition-colors" href="#">Resultados</a>
+<a class="hover:text-primary transition-colors" href="#">Sobre mí</a>
+<a class="hover:text-primary transition-colors" href="#">Contacto</a>
+</nav>
+<button class="bg-primary hover:bg-primary/80 text-text-main px-6 py-2 rounded-full text-sm font-bold transition-all">
+                Reserva Ahora
+            </button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="max-w-[1200px] mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 space-y-6">
+<span class="bg-primary/20 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">K-Beauty Aesthetics</span>
+<h1 class="text-5xl md:text-7xl font-black leading-tight">Tratamientos <br/><span class="text-primary italic">de Autor</span></h1>
+<p class="text-lg text-text-main/70 max-w-md leading-relaxed">
+                Precisión y belleza artesanal para realzar tu mirada con la delicadeza de la estética coreana. Cada detalle cuenta en nuestra búsqueda de la armonía facial.
+            </p>
+<div class="flex gap-4">
+<button class="bg-primary text-text-main px-8 py-4 rounded-lg font-bold">Ver Servicios</button>
+<button class="border border-secondary/30 px-8 py-4 rounded-lg font-bold hover:bg-secondary/5 transition-colors">Nuestro Método</button>
+</div>
+</div>
+<div class="flex-1 w-full">
+<div class="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Close-up of elegant eyebrow treatment and lashes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiN73_xdmsew7C3GWkzOd91TJiGbF5OxykraD0bkg3A0K46fI-_S_pYhJqUQ0Ob7AkiE37Fg8VvmBlk3_IBw-ZPtlO-SQXbyyaZTovTOpCHPswJSRYVVldq8ZgY7MWoOudTVlBsH52U8Am3QDgT4R6Cdk-eJLhwV3ntbL5GICR9CuUD4tlBhEOjD65WGYPt_Xuw3du4eVWMekwGEdWfgxvDPcmvyBKXj934NRHznoF-2XZTOFU2ERWTgi5EdeQFy6Aqv1G2i7-Uis"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-light/40 to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- Services Grid -->
+<section class="max-w-[1200px] mx-auto px-6 py-20">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-3xl font-bold uppercase tracking-tighter">Nuestra Carta de Servicios</h2>
+<div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Card 1 -->
+<div class="group bg-white dark:bg-background-dark/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-primary/10">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Eyebrow threading design treatment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt1M5769i8wKRHg-gwu9MJrNgmqFjrOvbvm9zyhGmBPwodElLQ-VslYObemOPVkHfmp4lB3f_pPXefhShjvUml-nRbH-U6NdETOqfdiJ9SfjPgwxDUlyXQKiXycRYG56DTHev4o0T-ajHHypHqKiFx6zh30FvLG8SpBr8vhaNSlUP11vhHlNdV-RUsLSlo76Fi2Nthn5W_-HCopnyb1HdwXRulKVHzwC08nJKz1L_bv76QM1uJSEnETSU5_TkvwuvwJNbWvODIfvY"/>
+<div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold">25€</div>
+</div>
+<div class="p-6 space-y-3">
+<h3 class="text-xl font-bold">Diseño de Cejas</h3>
+<div class="flex items-center gap-2 text-xs text-secondary font-medium uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">schedule</span> 45 min
+                    </div>
+<p class="text-sm text-text-main/60 leading-relaxed">Definición natural con hilo técnica coreana para un arco perfecto y limpio.</p>
+<button class="w-full py-3 bg-background-light hover:bg-primary/20 border border-primary/30 rounded-lg text-xs font-bold transition-colors">RESERVAR AHORA</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-white dark:bg-background-dark/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-primary/10">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Microblading session closeup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_a-fizwggD8xkwJlX6HKNhGbx2m8qZEKMMokQ-oJC5iVE33KaLkDGvHlkoXcOe5-ow7R1l-gqE_0R88HpcArEd-m68hB5yoQsBfB0g30tWgtLtKyMYK9dhicyFVnzr8EPeCad3UJc-kL4VviSyGQBgTWLfewysy1_IkAV-0VOZAgGbLQlaAaLo2l4k8S24goyc8J5emV5XTdj8E01YhuVxi0xEPnkYa2cOx1_1OCM_i_G4vu7PJaVlc1K2rxgf7W3nE07v0aUZ4c"/>
+<div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold">250€</div>
+</div>
+<div class="p-6 space-y-3">
+<h3 class="text-xl font-bold">Microblading</h3>
+<div class="flex items-center gap-2 text-xs text-secondary font-medium uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">schedule</span> 120 min
+                    </div>
+<p class="text-sm text-text-main/60 leading-relaxed">Simulación de vello hiperrealista. Relleno y densidad personalizados.</p>
+<button class="w-full py-3 bg-background-light hover:bg-primary/20 border border-primary/30 rounded-lg text-xs font-bold transition-colors">RESERVAR AHORA</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-white dark:bg-background-dark/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-primary/10">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Lash lift treatment results" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1BqNAQ5O0bowt8XF9XJDcB1qsMdMSOT6nbHHerPkWUiiV9lpPfj4blURu25NHfgsADLh-NhFXwVkcqc8_51abcLtNtle-vIaN-tJCCWFp3epHO-yJ0Cwjp1thUz8_vh_8B2I4jmCdT_D0RX6hCjWF4tFmP_7bc44-9Y8YegQ5cMMmMzlk7PwAhp_7DDYok04abTnzFV3WOVi0kbZgX9TWZw7aLj22BxTzA4L6lw2tvqwnVJsaL3tqgQxFFXXNfcitGgw0Pcx9rK4"/>
+<div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold">45€</div>
+</div>
+<div class="p-6 space-y-3">
+<h3 class="text-xl font-bold">Lash Lift</h3>
+<div class="flex items-center gap-2 text-xs text-secondary font-medium uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">schedule</span> 60 min
+                    </div>
+<p class="text-sm text-text-main/60 leading-relaxed">Curvatura y volumen natural desde la raíz sin necesidad de extensiones.</p>
+<button class="w-full py-3 bg-background-light hover:bg-primary/20 border border-primary/30 rounded-lg text-xs font-bold transition-colors">RESERVAR AHORA</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-white dark:bg-background-dark/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-primary/10">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Brow lamination finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe_fm2veWPDzAkgsBybt7-nufDNfZpGq_zIzY76tRt7QH_91Cv9JLU3EPYvOPGUVckG6B8bRZnjkbyysGWUmD8zY8e5AbPpW8FZXgJ45-_9yZeBVpDPYayibNcIkIF61rMAzz-f4J-mS9puNUFiijnP6kUSZYqJ7z4_s5koMobRwwYj-sjWqlJEiXQvEzyS1iu7dPD9YqWHlNgvs6UxJKtyqF6a6w9EAOr606rYlhyxTOX8EFLIv23g5njRLmV__cF1Eub5I1FDc0"/>
+<div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold">50€</div>
+</div>
+<div class="p-6 space-y-3">
+<h3 class="text-xl font-bold">Laminado Cejas</h3>
+<div class="flex items-center gap-2 text-xs text-secondary font-medium uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">schedule</span> 50 min
+                    </div>
+<p class="text-sm text-text-main/60 leading-relaxed">Cejas disciplinadas, con más cuerpo y un aspecto más poblado de tendencia.</p>
+<button class="w-full py-3 bg-background-light hover:bg-primary/20 border border-primary/30 rounded-lg text-xs font-bold transition-colors">RESERVAR AHORA</button>
+</div>
+</div>
+</div>
+</section><section class="max-w-[1200px] mx-auto px-6 py-20 bg-white/30">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-3xl font-bold uppercase tracking-tighter">Formación Exclusiva: Cursos Presenciales</h2>
+<div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Course 1 -->
+<div class="group bg-white dark:bg-background-dark/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-primary/10">
+<div class="h-64 overflow-hidden relative">
+<img alt="Curso Iniciación al Hilo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ4xNCL14wIx7Pz_01kt-05CKth4S9ineQVlYn9iPPMJNBFowRGNxkiG-iZphsZk9LdJvIDRhSaDrQE_TH5nNVYfhMQYvboA66v-ydAsJNhXgEubM4H0WEmcIoL55UUID1QXDtapjVZUwi0w1TERoo7hy5eadCAwWo3GgKmjpQfAlv4dmYJq4TipGdne2k8MbVVqhOoGTvotfWM5um0qabLSbH1FfM3YUjY6lnW0htQNlIpmXByGen7E-uvJbkF65nBDZSHdbGnAY"/>
+<div class="absolute top-4 right-4 bg-primary text-text-main px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Nivel: Inicial</div>
+</div>
+<div class="p-6 space-y-3">
+<h3 class="text-xl font-bold">Iniciación al Hilo</h3>
+<div class="flex items-center gap-2 text-xs text-secondary font-medium uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">calendar_today</span> 2 Días
+                </div>
+<p class="text-sm text-text-main/60 leading-relaxed">Domina la técnica ancestral del hilo desde cero. Teoría de visagismo y práctica intensiva en modelos reales.</p>
+<button class="w-full py-3 bg-white hover:bg-primary/10 border border-primary/30 rounded-lg text-xs font-bold transition-colors">MÁS INFORMACIÓN</button>
+</div>
+</div>
+<!-- Course 2 -->
+<div class="group bg-white dark:bg-background-dark/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-primary/10">
+<div class="h-64 overflow-hidden relative">
+<img alt="Curso Perfeccionamiento de Cejas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt1M5769i8wKRHg-gwu9MJrNgmqFjrOvbvm9zyhGmBPwodElLQ-VslYObemOPVkHfmp4lB3f_pPXefhShjvUml-nRbH-U6NdETOqfdiJ9SfjPgwxDUlyXQKiXycRYG56DTHev4o0T-ajHHypHqKiFx6zh30FvLG8SpBr8vhaNSlUP11vhHlNdV-RUsLSlo76Fi2Nthn5W_-HCopnyb1HdwXRulKVHzwC08nJKz1L_bv76QM1uJSEnETSU5_TkvwuvwJNbWvODIfvY"/>
+<div class="absolute top-4 right-4 bg-primary text-text-main px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Nivel: Avanzado</div>
+</div>
+<div class="p-6 space-y-3">
+<h3 class="text-xl font-bold">Perfeccionamiento de Cejas</h3>
+<div class="flex items-center gap-2 text-xs text-secondary font-medium uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">calendar_today</span> 1 Día
+                </div>
+<p class="text-sm text-text-main/60 leading-relaxed">Para profesionales que buscan pulir su técnica, mejorar la velocidad y perfeccionar el acabado K-Beauty.</p>
+<button class="w-full py-3 bg-white hover:bg-primary/10 border border-primary/30 rounded-lg text-xs font-bold transition-colors">MÁS INFORMACIÓN</button>
+</div>
+</div>
+<!-- Course 3 -->
+<div class="group bg-white dark:bg-background-dark/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-primary/10">
+<div class="h-64 overflow-hidden relative">
+<img alt="Curso Masterclass Lash Lift" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1BqNAQ5O0bowt8XF9XJDcB1qsMdMSOT6nbHHerPkWUiiV9lpPfj4blURu25NHfgsADLh-NhFXwVkcqc8_51abcLtNtle-vIaN-tJCCWFp3epHO-yJ0Cwjp1thUz8_vh_8B2I4jmCdT_D0RX6hCjWF4tFmP_7bc44-9Y8YegQ5cMMmMzlk7PwAhp_7DDYok04abTnzFV3WOVi0kbZgX9TWZw7aLj22BxTzA4L6lw2tvqwnVJsaL3tqgQxFFXXNfcitGgw0Pcx9rK4"/>
+<div class="absolute top-4 right-4 bg-primary text-text-main px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Nivel: Experto</div>
+</div>
+<div class="p-6 space-y-3">
+<h3 class="text-xl font-bold">Masterclass Lash Lift</h3>
+<div class="flex items-center gap-2 text-xs text-secondary font-medium uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">calendar_today</span> 1.5 Días
+                </div>
+<p class="text-sm text-text-main/60 leading-relaxed">Especialización técnica en curvatura de pestañas. Protocolos de seguridad y química del tratamiento.</p>
+<button class="w-full py-3 bg-white hover:bg-primary/10 border border-primary/30 rounded-lg text-xs font-bold transition-colors">MÁS INFORMACIÓN</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Results Gallery (Before & After Mosaic) -->
+<section class="bg-primary/5 py-20 px-6">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold uppercase tracking-tighter">Resultados Reales</h2>
+<p class="text-secondary mt-2 italic">La sutileza es nuestra firma</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="space-y-4">
+<div class="rounded-xl overflow-hidden aspect-[3/4]"><img class="w-full h-full object-cover" data-alt="Before and after brow design result" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5DEfQo1hZiDjLJf9FhhUeJmQhZhfSfmuUmKWZMl6PZLIzgnAoX2nfB0FMasa7uoTraeIrxkp1YLuhMDsZPW50scou73fLiV_Xfg2AOhaBvLEI77vt0veoLc2tdzQeV_FwO0Guyvc1Y2uPT-F9x7x02qmRZ6_J1frUlXeJWo6cas6js8kLLmDiuPUSCgGYp_YgNH22QBcAFNl05IUIo3ep90JBq8t-axe1L6bOcrOtFTq_k2gNR_lnb_CEll_-BvFIqHRq4lR67sI"/></div>
+<div class="rounded-xl overflow-hidden aspect-square"><img class="w-full h-full object-cover" data-alt="Close up of perfected eyelashes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWdbZ3pHBFCSDeKu0QGUnAwbrdPG8ZbgZ3OrLJohOIPbGrYjHgcNn1I2JKYIBPy3ioP36olvCIlNdaebkLy8EfnEO1rKHjxBiOkG8T2vZuRLWcKlMgWSeRmZQHs2fs8whVqPhCv6zhrBbLVoRM-rT6J2D0R1uk6Q892xrna7bR1HdQU4pu1SIb__7l3C4PdSHOGvf6z2XmwaNCbCNWUFWGoSeErhNHWPF9IjMQ8svUQ8v8giapha4rpaJxH08HLZsT_94dBWgpOJA"/></div>
+</div>
+<div class="space-y-4 pt-10">
+<div class="rounded-xl overflow-hidden aspect-square"><img class="w-full h-full object-cover" data-alt="Subtle microblading result" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwAcmxVyQ66m_-9TSrv8hho7UcPxAkKaq0hEz4fTyjw1wFkl-Ftlo9j5gUwCgx-L0_ujPn5DpZ-BsD5phY0xWo106ewsFr1rZ66FwIKDsDx8zACoDxyR8i6uCTQc0nZ-MGOsp95Okl3cSBy3p7By71-o0dam03do1d5S31odLB2HE9FV_6JgAgkPZxTqYZP4pBbXllR68kCTcQ0xiTu3H103XFU4H5B4trastjToU5ODEaE-J1krYsecOlUumXAguvpDcOXMvBLu4"/></div>
+<div class="rounded-xl overflow-hidden aspect-[3/4]"><img class="w-full h-full object-cover" data-alt="Clean eyebrow threading work" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8MjtiYZKyQ6WQ4tMKoo5ZwRt0K5ziQMbhcfNtULrWRjjab0JKZ46AQBwC-Gbl0z8UgB8XQU7Q_ApohPjTOuo5R9UXTsalAmd3Sa0CZEJROqHLjyG4jjSZoD9AJyZ1N5tdQdggLn8CHRSjMiZEaHeII5wp7Z-fGE7z-Gdv_jRsojUQGBoIOUCHibH6p90XkMuc9TGKlx7ZSm85fz5JKE6T3Gj4LSXOdUjtHxtBz-eh1YVuUM31UKo3Rzlv7u8E_V3krLcvbQeg2Mc"/></div>
+</div>
+<div class="space-y-4">
+<div class="rounded-xl overflow-hidden aspect-[3/4]"><img class="w-full h-full object-cover" data-alt="Healed microblading brows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ4xNCL14wIx7Pz_01kt-05CKth4S9ineQVlYn9iPPMJNBFowRGNxkiG-iZphsZk9LdJvIDRhSaDrQE_TH5nNVYfhMQYvboA66v-ydAsJNhXgEubM4H0WEmcIoL55UUID1QXDtapjVZUwi0w1TERoo7hy5eadCAwWo3GgKmjpQfAlv4dmYJq4TipGdne2k8MbVVqhOoGTvotfWM5um0qabLSbH1FfM3YUjY6lnW0htQNlIpmXByGen7E-uvJbkF65nBDZSHdbGnAY"/></div>
+<div class="rounded-xl overflow-hidden aspect-square"><img class="w-full h-full object-cover" data-alt="Before after lash lift" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXCjiwl-y7JOdgYVdHUToVXIXrKmbByEtfURGypMhr2ks7S9mrI_eNj3NfP58b2qDgE7BpJqmZPboL-QFM6ZOTkPL0BE0xFxd57ImpVnHpAGFF2arQQHTTexVHOziFIuiFdw6fPN8nPIhY3qFZ7rKohpq0OeBXlWfOXv6FTtgxU71We3Igl07pu0j5P87nSNfAPMJyY6ivbOzvEAmc-3Zx3qMRRuG9b94rlfnJeu991MGyB_saoYFb3vTuV2KftvCgTk9oHZQK9BI"/></div>
+</div>
+<div class="space-y-4 pt-10">
+<div class="rounded-xl overflow-hidden aspect-square"><img class="w-full h-full object-cover" data-alt="Brow lamination before and after" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2P4ivLdxPvwhVY09oynjyOYyfcQbN8drie6NH3C0gtgMWhO7yitcwLqlPfhDLjZnMJ-xzXesHbDGSRs6yBaVPm1W8UiwhmS6VYVYYL5OCKUH1Ear-vnj3DazVVKyNTwNeGRuy6HeHFtSW18DHnU01OQ8C0v8hD09dB5geNjY2k5GToGBrYmFkwIKR9YZkDTwfxIU4lcxmnIX43canhu6lT421pvW8SM6rzI8W0cN9e5PAW7yNiKoZOmB93hF3b4oAJBGsGrhzyCM"/></div>
+<div class="rounded-xl overflow-hidden aspect-[3/4]"><img class="w-full h-full object-cover" data-alt="High precision brow line" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnEfD2C52R97qQWapukk1HsDngtK-HspmepdEmNwVlyrkWIPYvJW1pR5prt6yz3sJ-LDYCsI3cEvuDLPMVomzooVGU1wxHJZMD5ZUvvxiGjGzkppRi8Wxid2cbHyNyKlGrya92baLQ4JorBwgxBXIxvlnrHCBsENGk74graixIPS8jNEvlzBbr1Am2pThfbLNIXo0AI5j9dhRpZBRF-GA2p5Ofj6n7V5PD5i4M5pd4CF5FEFZz8NpN6cEcDFagCVoCWVHngz7HPOA"/></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Info Section (FAQs) -->
+<section class="max-w-[900px] mx-auto px-6 py-24">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="p-8 bg-primary/10 rounded-2xl border-l-4 border-primary">
+<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">help_center</span> ¿Qué esperar?
+                </h3>
+<p class="text-text-main/70 text-sm leading-relaxed">
+                    Nuestra sesión comienza con un diagnóstico personalizado de visagismo. Analizamos tu estructura ósea y dirección del vello para garantizar un resultado que no solo embellezca, sino que armonice tu rostro de forma natural.
+                </p>
+</div>
+<div class="p-8 bg-secondary/10 rounded-2xl border-l-4 border-secondary">
+<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">health_and_safety</span> Cuidados Post
+                </h3>
+<p class="text-text-main/70 text-sm leading-relaxed">
+                    La durabilidad del tratamiento depende del cuidado. Evitar el agua directa en las primeras 24h, no usar saunas y aplicar nuestro sérum regenerador diario son pasos clave para mantener tu mirada radiante por semanas.
+                </p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-background-dark text-white/90 py-16 px-6">
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">flare</span>
+<h2 class="text-xl font-bold tracking-tight uppercase">Con Hilo Depilo</h2>
+</div>
+<p class="text-sm text-white/50 max-w-xs">Especialistas en la técnica coreana de diseño de mirada. Belleza artesanal y minimalista en el corazón de Madrid.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">mail</span>
+</a>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="text-sm font-bold uppercase tracking-widest text-primary">Ubicación</h4>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<p class="text-sm text-white/70">Calle Serrano 45, <br/>Barrio de Salamanca, Madrid</p>
+</div>
+<div class="h-32 w-full rounded-lg overflow-hidden bg-white/5 grayscale">
+<img class="w-full h-full object-cover" data-alt="Map location in Madrid" data-location="Madrid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLVpUotmL0UOmOvubdo5LZUcnQ72dmw0AviLqKyQqTImbPy6vG5QiY1Zh1mgJ64-KFIzIxuGY9w_AfW8c1OiqaOk91LcOqw8oYdNrssLdnel_RvVsSznw-X5_nv6MPbjFWxja7AppfP-vVv_7pTF1oiYW01cKHECDCim-Vr-qO6rNjwa34mD19kaBY6o9bxtGB3H3J0lUMvM_LGjJJJtkBU4hysbMXbNaoMtgUAOHkP0eUACJ2RFaLE3UbC3UkmF9KLdhrd5R45-U"/>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="text-sm font-bold uppercase tracking-widest text-primary">Contacto Directo</h4>
+<div class="space-y-4">
+<p class="text-sm text-white/70">Atención personalizada y citas vía WhatsApp.</p>
+<a class="inline-flex items-center gap-3 bg-[#25D366] text-white px-6 py-3 rounded-full font-bold text-sm hover:scale-105 transition-transform" href="#">
+<span class="material-symbols-outlined">chat</span>
+                        WhatsApp Reservas
+                    </a>
+<div class="pt-4 space-y-1">
+<p class="text-xs text-white/40">Lun - Vie: 10:00 - 20:00</p>
+<p class="text-xs text-white/40">Sáb: 10:00 - 14:00</p>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/30">
+<p>© 2024 Con Hilo Depilo. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">Política de Privacidad</a>
+<a class="hover:text-white transition-colors" href="#">Aviso Legal</a>
+</div>
+</div>
+</footer>
+</body></html>
