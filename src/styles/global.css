@@ -118,3 +118,57 @@
 .hero-basic:hover .hero-img {
   scale: 1.06;
 }
+
+@theme {
+  --color-ui-bullet: rgb(42 42 42 / 0.18);
+  --shadow-hero-soft: 0 24px 48px -18px rgb(0 0 0 / 0.18);
+}
+
+/* HeroSlider */
+.hero-slider-image {
+  width: 100%;
+}
+
+.hero-slider-image :is(a, div.aspect-\[4\/5\]) {
+  aspect-ratio: 1 / 1;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-hero-soft);
+}
+
+.hero-slider-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-slider-bullet {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-ui-bullet);
+  transition:
+    width 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hero-pagination :global(.swiper-pagination-bullet-active) {
+  width: 1.5rem;
+  background: var(--color-brand-primary);
+}
+
+.hero-swiper .swiper-slide {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.hero-swiper .swiper-slide-active {
+  opacity: 1;
+}
+
+@media (max-width: 1023px) {
+  .hero-slider-image :is(a, div.aspect-\[4\/5\]) {
+    aspect-ratio: 4 / 5;
+  }
+}
