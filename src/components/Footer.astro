@@ -1,5 +1,5 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 
 export interface SocialLink {
   icon: string;
@@ -15,15 +15,15 @@ export interface FooterData {
   brand: {
     name: string;
     description: string;
-    icon: string;
+    icon?: string;
+    logoUrl?: string;
   };
   socialLinks: SocialLink[];
   location: {
     title: string;
     addressLine1: string;
     addressLine2: string;
-    mapImageUrl: string;
-    mapAltText: string;
+    mapEmbedUrl: string;
   };
   contact: {
     title: string;
@@ -44,101 +44,157 @@ interface Props {
 
 const defaultFooterData: FooterData = {
   brand: {
-    name: "Con Hilo Depilo",
-    description: "Especialistas en la técnica coreana de diseño de mirada. Belleza artesanal y minimalista en el corazón de Madrid.",
-    icon: "Sparkles"
+    name: "Cuidado y Salud para ti",
+    description:
+      "Conoce toda nuestra amplia gama de tratamientos de belleza, depilación y masaje. Ponte en manos de profesionales y pide ya tu cita online.",
+    logoUrl: "/logo.png",
   },
   socialLinks: [
     { icon: "Globe", url: "#" },
     { icon: "Mail", url: "#" },
-    { icon: "Instagram", url: "#" }
+    { icon: "Instagram", url: "#" },
   ],
   location: {
     title: "Ubicación",
-    addressLine1: "Calle Serrano 45,",
-    addressLine2: "Barrio de Salamanca, Madrid",
-    mapImageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDLVpUotmL0UOmOvubdo5LZUcnQ72dmw0AviLqKyQqTImbPy6vG5QiY1Zh1mgJ64-KFIzIxuGY9w_AfW8c1OiqaOk91LcOqw8oYdNrssLdnel_RvVsSznw-X5_nv6MPbjFWxja7AppfP-vVv_7pTF1oiYW01cKHECDCim-Vr-qO6rNjwa34mD19kaBY6o9bxtGB3H3J0lUMvM_LGjJJJtkBU4hysbMXbNaoMtgUAOHkP0eUACJ2RFaLE3UbC3UkmF9KLdhrd5R45-U",
-    mapAltText: "Map location in Madrid"
+    addressLine1: "C. de Tetuán, 6,",
+    addressLine2: "28013 Madrid",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=C.+de+Tetuán,+6,+28013+Madrid&output=embed",
   },
   contact: {
     title: "Contacto Directo",
-    description: "Atención personalizada y citas vía WhatsApp.",
-    whatsappText: "WhatsApp Reservas",
+    description: "info@conhilodepilo.com | Phone: 915 23 14 06",
+    whatsappText: "Pide cita",
     whatsappUrl: "#",
-    schedule: [
-      "Lun - Vie: 10:00 - 20:00",
-      "Sáb: 10:00 - 14:00"
-    ]
+    schedule: ["L-S 10:00 a 20:30h.", "D 12:00 a 19:00h."],
   },
   legal: {
-    copyrightText: `© ${new Date().getFullYear()} Con Hilo Depilo. Todos los derechos reservados.`,
+    copyrightText: `Con Hilo Depilo © 2026 Todos los derechos reservados`,
     links: [
+      { label: "Aviso Legal", url: "#" },
+      { label: "Política de Cookies", url: "#" },
       { label: "Política de Privacidad", url: "#" },
-      { label: "Aviso Legal", url: "#" }
-    ]
-  }
+      { label: "Términos y Condiciones", url: "#" },
+    ],
+  },
 };
 
 const { data = defaultFooterData } = Astro.props;
 ---
 
 <footer class="bg-ui-bg-dark text-white/90 py-16 px-6">
-<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+  <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
     <!-- Brand -->
     <div class="space-y-6">
-        <div class="flex items-center gap-2">
-            <Icon name={data.brand.icon as any} class="text-brand-secondary" size={32} />
-            <h2 class="text-xl font-bold tracking-tight uppercase">{data.brand.name}</h2>
-        </div>
-        <p class="text-sm text-white/50 max-w-xs">{data.brand.description}</p>
-        <div class="flex gap-4">
-            {data.socialLinks.map(link => (
-                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-secondary hover:text-ui-bg-dark transition-colors" href={link.url}>
-                    <Icon name={link.icon as any} size={18} />
-                </a>
-            ))}
-        </div>
+      <div class="flex items-center gap-2 mb-4">
+        {
+          data.brand.logoUrl ? (
+            <img
+              src={data.brand.logoUrl}
+              alt={data.brand.name}
+              class="h-16 w-auto object-contain bg-white px-2 py-1 rounded"
+            />
+          ) : (
+            <>
+              {data.brand.icon && (
+                <Icon
+                  name={data.brand.icon as any}
+                  class="text-brand-secondary"
+                  size={32}
+                />
+              )}
+              <h2 class="text-xl font-bold tracking-tight uppercase">
+                {data.brand.name}
+              </h2>
+            </>
+          )
+        }
+      </div>
+      <p class="text-sm text-white/50 max-w-xs">{data.brand.description}</p>
+      <div class="flex gap-4">
+        {
+          data.socialLinks.map((link) => (
+            <a
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-secondary hover:text-ui-bg-dark transition-colors"
+              href={link.url}
+            >
+              <Icon name={link.icon as any} size={18} />
+            </a>
+          ))
+        }
+      </div>
     </div>
 
     <!-- Location -->
     <div class="space-y-6">
-        <h4 class="text-sm font-bold uppercase tracking-widest text-brand-secondary">{data.location.title}</h4>
-        <div class="space-y-4">
-            <div class="flex items-start gap-3">
-                <Icon name="MapPin" class="text-brand-primary" size={20} />
-                <p class="text-sm text-white/70">{data.location.addressLine1} <br/>{data.location.addressLine2}</p>
-            </div>
-            <div class="h-32 w-full rounded-lg overflow-hidden bg-white/5 grayscale">
-                <img class="w-full h-full object-cover" alt={data.location.mapAltText} src={data.location.mapImageUrl}/>
-            </div>
+      <h4
+        class="text-sm font-bold uppercase tracking-widest text-brand-secondary"
+      >
+        {data.location.title}
+      </h4>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <Icon name="MapPin" class="text-brand-primary" size={20} />
+          <p class="text-sm text-white/70">
+            {data.location.addressLine1}
+            <br />{data.location.addressLine2}
+          </p>
         </div>
+        <div
+          class="h-32 w-full rounded-lg overflow-hidden bg-white/5 grayscale"
+        >
+          <iframe
+            src={data.location.mapEmbedUrl}
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
     </div>
 
     <!-- Contact -->
     <div class="space-y-6">
-        <h4 class="text-sm font-bold uppercase tracking-widest text-brand-secondary">{data.contact.title}</h4>
-        <div class="space-y-4">
-            <p class="text-sm text-white/70">{data.contact.description}</p>
-            <a class="inline-flex items-center gap-3 bg-brand-accent text-ui-bg-dark px-6 py-3 rounded-full font-bold text-sm hover:scale-105 transition-transform" href={data.contact.whatsappUrl}>
-                <Icon name="MessageCircle" size={20} />
-                {data.contact.whatsappText}
-            </a>
-            <div class="pt-4 space-y-1">
-                {data.contact.schedule.map(time => (
-                    <p class="text-xs text-white/40">{time}</p>
-                ))}
-            </div>
+      <h4
+        class="text-sm font-bold uppercase tracking-widest text-brand-secondary"
+      >
+        {data.contact.title}
+      </h4>
+      <div class="space-y-4">
+        <p class="text-sm text-white/70">{data.contact.description}</p>
+        <a
+          class="inline-flex items-center gap-3 bg-brand-accent text-ui-bg-dark px-6 py-3 rounded-full font-bold text-sm hover:scale-105 transition-transform"
+          href={data.contact.whatsappUrl}
+        >
+          <Icon name="MessageCircle" size={20} />
+          {data.contact.whatsappText}
+        </a>
+        <div class="pt-4 space-y-1">
+          {
+            data.contact.schedule.map((time) => (
+              <p class="text-xs text-white/40">{time}</p>
+            ))
+          }
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- Bottom bar -->
-<div class="max-w-[1200px] mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/30">
+  <!-- Bottom bar -->
+  <div
+    class="max-w-[1200px] mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/30"
+  >
     <p>{data.legal.copyrightText}</p>
     <div class="flex gap-6">
-        {data.legal.links.map(link => (
-            <a class="hover:text-white transition-colors" href={link.url}>{link.label}</a>
-        ))}
+      {
+        data.legal.links.map((link) => (
+          <a class="hover:text-white transition-colors" href={link.url}>
+            {link.label}
+          </a>
+        ))
+      }
     </div>
-</div>
+  </div>
 </footer>
