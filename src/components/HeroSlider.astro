@@ -23,11 +23,6 @@ const { slides } = Astro.props;
 const first = slides[0];
 ---
 
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-
 <section class="relative overflow-hidden bg-ui-bg-light">
   <div class="container relative z-10 py-16 lg:py-20">
     <div
@@ -113,25 +108,29 @@ const first = slides[0];
   </div>
 </section>
 
-<script
-  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
-  is:inline></script>
+<!-- El CSS de Swiper se importa aquí: Vite lo procesa y lo bundlea -->
+<style>
+  @import "swiper/css";
+</style>
 
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    new Swiper(".hero-swiper", {
-      loop: true,
-      speed: 650,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".hero-pagination",
-        clickable: true,
-        renderBullet: (_, className) =>
-          `<button class="${className} hero-slider-bullet" aria-label="Ir al slide"></button>`,
-      },
-    });
+<!-- Script normal de Astro (sin is:inline): Vite resuelve el import de npm -->
+<script>
+  import Swiper from "swiper";
+  import { Autoplay, Pagination } from "swiper/modules";
+
+  const swiper = new Swiper(".hero-swiper", {
+    modules: [Autoplay, Pagination],
+    loop: true,
+    speed: 650,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".hero-pagination",
+      clickable: true,
+      renderBullet: (_, className) =>
+        `<button class="${className} hero-slider-bullet" aria-label="Ir al slide"></button>`,
+    },
   });
 </script>
