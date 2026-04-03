@@ -1,0 +1,144 @@
+---
+import Icon from './Icon.astro';
+
+export interface SocialLink {
+  icon: string;
+  url: string;
+}
+
+export interface LegalLink {
+  label: string;
+  url: string;
+}
+
+export interface FooterData {
+  brand: {
+    name: string;
+    description: string;
+    icon: string;
+  };
+  socialLinks: SocialLink[];
+  location: {
+    title: string;
+    addressLine1: string;
+    addressLine2: string;
+    mapImageUrl: string;
+    mapAltText: string;
+  };
+  contact: {
+    title: string;
+    description: string;
+    whatsappText: string;
+    whatsappUrl: string;
+    schedule: string[];
+  };
+  legal: {
+    copyrightText: string;
+    links: LegalLink[];
+  };
+}
+
+interface Props {
+  data?: FooterData;
+}
+
+const defaultFooterData: FooterData = {
+  brand: {
+    name: "Con Hilo Depilo",
+    description: "Especialistas en la técnica coreana de diseño de mirada. Belleza artesanal y minimalista en el corazón de Madrid.",
+    icon: "Sparkles"
+  },
+  socialLinks: [
+    { icon: "Globe", url: "#" },
+    { icon: "Mail", url: "#" },
+    { icon: "Instagram", url: "#" }
+  ],
+  location: {
+    title: "Ubicación",
+    addressLine1: "Calle Serrano 45,",
+    addressLine2: "Barrio de Salamanca, Madrid",
+    mapImageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDLVpUotmL0UOmOvubdo5LZUcnQ72dmw0AviLqKyQqTImbPy6vG5QiY1Zh1mgJ64-KFIzIxuGY9w_AfW8c1OiqaOk91LcOqw8oYdNrssLdnel_RvVsSznw-X5_nv6MPbjFWxja7AppfP-vVv_7pTF1oiYW01cKHECDCim-Vr-qO6rNjwa34mD19kaBY6o9bxtGB3H3J0lUMvM_LGjJJJtkBU4hysbMXbNaoMtgUAOHkP0eUACJ2RFaLE3UbC3UkmF9KLdhrd5R45-U",
+    mapAltText: "Map location in Madrid"
+  },
+  contact: {
+    title: "Contacto Directo",
+    description: "Atención personalizada y citas vía WhatsApp.",
+    whatsappText: "WhatsApp Reservas",
+    whatsappUrl: "#",
+    schedule: [
+      "Lun - Vie: 10:00 - 20:00",
+      "Sáb: 10:00 - 14:00"
+    ]
+  },
+  legal: {
+    copyrightText: `© ${new Date().getFullYear()} Con Hilo Depilo. Todos los derechos reservados.`,
+    links: [
+      { label: "Política de Privacidad", url: "#" },
+      { label: "Aviso Legal", url: "#" }
+    ]
+  }
+};
+
+const { data = defaultFooterData } = Astro.props;
+---
+
+<footer class="bg-ui-bg-dark text-white/90 py-16 px-6">
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <!-- Brand -->
+    <div class="space-y-6">
+        <div class="flex items-center gap-2">
+            <Icon name={data.brand.icon as any} class="text-brand-secondary" size={32} />
+            <h2 class="text-xl font-bold tracking-tight uppercase">{data.brand.name}</h2>
+        </div>
+        <p class="text-sm text-white/50 max-w-xs">{data.brand.description}</p>
+        <div class="flex gap-4">
+            {data.socialLinks.map(link => (
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-secondary hover:text-ui-bg-dark transition-colors" href={link.url}>
+                    <Icon name={link.icon as any} size={18} />
+                </a>
+            ))}
+        </div>
+    </div>
+
+    <!-- Location -->
+    <div class="space-y-6">
+        <h4 class="text-sm font-bold uppercase tracking-widest text-brand-secondary">{data.location.title}</h4>
+        <div class="space-y-4">
+            <div class="flex items-start gap-3">
+                <Icon name="MapPin" class="text-brand-primary" size={20} />
+                <p class="text-sm text-white/70">{data.location.addressLine1} <br/>{data.location.addressLine2}</p>
+            </div>
+            <div class="h-32 w-full rounded-lg overflow-hidden bg-white/5 grayscale">
+                <img class="w-full h-full object-cover" alt={data.location.mapAltText} src={data.location.mapImageUrl}/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="space-y-6">
+        <h4 class="text-sm font-bold uppercase tracking-widest text-brand-secondary">{data.contact.title}</h4>
+        <div class="space-y-4">
+            <p class="text-sm text-white/70">{data.contact.description}</p>
+            <a class="inline-flex items-center gap-3 bg-brand-accent text-ui-bg-dark px-6 py-3 rounded-full font-bold text-sm hover:scale-105 transition-transform" href={data.contact.whatsappUrl}>
+                <Icon name="MessageCircle" size={20} />
+                {data.contact.whatsappText}
+            </a>
+            <div class="pt-4 space-y-1">
+                {data.contact.schedule.map(time => (
+                    <p class="text-xs text-white/40">{time}</p>
+                ))}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bottom bar -->
+<div class="max-w-[1200px] mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/30">
+    <p>{data.legal.copyrightText}</p>
+    <div class="flex gap-6">
+        {data.legal.links.map(link => (
+            <a class="hover:text-white transition-colors" href={link.url}>{link.label}</a>
+        ))}
+    </div>
+</div>
+</footer>

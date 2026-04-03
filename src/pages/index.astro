@@ -6,6 +6,7 @@ import Icon from '../components/Icon.astro';
 import HeroImage from '../components/HeroImage.astro';
 import heroImage from '../assets/images/hero.png';
 import Gallery from '../components/Gallery.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
@@ -66,32 +67,7 @@ import Gallery from '../components/Gallery.astro';
 		<!-- Gallery Section -->
 		<Gallery />
 
-		<!-- Simple Footer -->
-		<footer class="py-12 bg-ui-bg-dark text-white">
-			<div class="container">
-				<div class="flex flex-col md:flex-row justify-between items-center gap-8">
-					<div class="flex flex-col gap-2">
-						<span class="text-2xl font-black uppercase tracking-tighter">
-							Con Hilo <span class="text-brand-primary">Depilo</span>
-						</span>
-						<p class="text-white/50 text-sm">
-							© {new Date().getFullYear()} Con Hilo Depilo. Todos los derechos reservados.
-						</p>
-					</div>
-					
-					<div class="flex gap-6">
-						<a href="#" class="text-white/70 hover:text-brand-primary transition-colors">
-							<Icon name="Instagram" size={24} />
-						</a>
-						<a href="#" class="text-white/70 hover:text-brand-primary transition-colors">
-							<Icon name="Facebook" size={24} />
-						</a>
-						<a href="#" class="text-white/70 hover:text-brand-primary transition-colors">
-							<Icon name="MessageCircle" size={24} />
-						</a>
-					</div>
-				</div>
-			</div>
-		</footer>
+		<!-- New Footer Component -->
+		<Footer />
 	</main>
 </Layout>
