@@ -1,0 +1,55 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import HeroImage from './HeroImage.astro';
+import heroImage from '../assets/images/hero.png';
+---
+
+<section class="relative min-h-[80vh] flex items-center bg-ui-bg-light overflow-hidden" id="hero">
+  <!-- Decoration -->
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-primary/5 -skew-x-12 translate-x-1/4"></div>
+  
+  <div class="container relative z-10 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="flex flex-col gap-8 max-w-2xl">
+        <div class="flex flex-col gap-4">
+          <span class="inline-flex items-center gap-2 text-brand-secondary font-bold tracking-[0.2em] uppercase text-sm">
+            <span class="w-8 h-px bg-brand-secondary"></span>
+            Estética K-Beauty en Madrid
+          </span>
+          <h1 class="text-5xl md:text-7xl font-black text-ui-text-main leading-[0.9] uppercase tracking-tighter">
+            Con Hilo <br/>
+            <span class="text-brand-secondary">Depilo</span>
+          </h1>
+          <p class="text-xl text-ui-text-muted leading-relaxed">
+            Descubre la perfección de la técnica coreana. Especialistas en diseño de mirada, depilación con hilo y tratamientos faciales avanzados.
+          </p>
+        </div>
+        
+        <div class="flex flex-wrap gap-4">
+          <Button size="lg" href="#servicios">
+            Explorar Servicios
+            <Icon name="ArrowRight" size={20} class="ml-2" />
+          </Button>
+          <Button variant="outline" size="lg" href="#footer">
+            Reservar Cita
+          </Button>
+        </div>
+
+        <div class="flex items-center gap-8 pt-4">
+          <div class="flex flex-col">
+            <span class="text-2xl font-black text-ui-text-main">4.9/5</span>
+            <span class="text-xs text-ui-text-muted uppercase tracking-widest font-bold">Google Reviews</span>
+          </div>
+          <div class="w-px h-10 bg-brand-primary/20"></div>
+          <div class="flex flex-col">
+            <span class="text-2xl font-black text-ui-text-main">+2k</span>
+            <span class="text-xs text-ui-text-muted uppercase tracking-widest font-bold">Clientes Felices</span>
+          </div>
+        </div>
+      </div>
+
+      <HeroImage variant="decorator" src={heroImage} alt="Imagen de hero" class="hidden lg:block" />
+    </div>
+  </div>
+</section>
