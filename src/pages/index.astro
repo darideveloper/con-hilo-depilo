@@ -7,6 +7,7 @@ import HeroImage from '../components/HeroImage.astro';
 import heroImage from '../assets/images/hero.png';
 import Gallery from '../components/Gallery.astro';
 import Footer from '../components/Footer.astro';
+import InfoCard from '../components/InfoCard.astro';
 ---
 
 <Layout>
@@ -66,6 +67,26 @@ import Footer from '../components/Footer.astro';
 
 		<!-- Gallery Section -->
 		<Gallery />
+
+		<!-- Info Section -->
+		<section class="max-w-[900px] mx-auto px-6 py-24">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+				<InfoCard 
+					title="¿Qué esperar?"
+					text="Nuestra sesión comienza con un diagnóstico personalizado de visagismo. Analizamos tu estructura ósea y dirección del vello para garantizar un resultado que no solo embellezca, sino que armonice tu rostro de forma natural."
+					variant="primary"
+				>
+					<Icon slot="icon" name="HelpCircle" size={24} />
+				</InfoCard>
+				<InfoCard 
+					title="Cuidados Post"
+					text="La durabilidad del tratamiento depende del cuidado. Evitar el agua directa en las primeras 24h, no usar saunas y aplicar nuestro sérum regenerador diario son pasos clave para mantener tu mirada radiante por semanas."
+					variant="secondary"
+				>
+					<Icon slot="icon" name="ShieldCheck" size={24} />
+				</InfoCard>
+			</div>
+		</section>
 
 		<!-- New Footer Component -->
 		<Footer />
