@@ -136,7 +136,7 @@
     transform 0.25s ease;
 }
  
-.hero-pagination :global(.swiper-pagination-bullet-active) {
+.hero-pagination .swiper-pagination-bullet-active {
   width: 1.5rem;
   background: var(--color-brand-primary);
 }
