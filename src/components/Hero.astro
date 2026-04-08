@@ -1,0 +1,58 @@
+---
+import Badge from "./Badge.astro";
+import Button from "./Button.astro";
+import HeroSlider from "./molecules/HeroSlider.tsx";
+
+import heroImg1 from "../assets/images/hero.png";
+import heroImg2 from "../assets/images/hero.png";
+import heroImg3 from "../assets/images/hero.png";
+
+const images = [
+  { src: heroImg1.src, alt: "Tratamiento de cejas 1" },
+  { src: heroImg2.src, alt: "Tratamiento de cejas 2" },
+  { src: heroImg3.src, alt: "Tratamiento de cejas 3" },
+];
+---
+
+<section id="hero" class="relative bg-ui-bg-light">
+  <div class="container relative z-10 py-16 lg:py-20">
+    <div
+      class="grid min-h-[78vh] items-center gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16"
+    >
+      <!-- Copy -->
+      <div class="flex max-w-[34rem] flex-col justify-center">
+        <div class="mb-6">
+          <Badge variant="primary" class="text-brand-primary/70">
+            K-Beauty Aesthetics
+          </Badge>
+        </div>
+
+        <h1
+          class="text-ui-text-main text-[clamp(3.5rem,7vw,5.25rem)] font-black leading-[0.9] tracking-[-0.04em]"
+        >
+          Tratamientos
+          <br />
+          <span class="text-brand-primary italic">de Autor</span>
+        </h1>
+
+        <p class="mt-8 max-w-[31rem] text-[1.15rem] leading-[1.7] text-ui-text-muted">
+          Precisión y belleza artesanal para realzar tu mirada con la delicadeza
+          de la estética coreana. Cada detalle cuenta en nuestra búsqueda de la
+          armonía facial.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <Button size="md" href="#servicios">Ver Servicios</Button>
+          <Button variant="outline" size="md" href="#metodo">
+            Nuestro Método
+          </Button>
+        </div>
+      </div>
+
+      <!-- Slider -->
+      <div class="flex flex-col items-center lg:items-start">
+        <HeroSlider client:load images={images} />
+      </div>
+    </div>
+  </div>
+</section>
