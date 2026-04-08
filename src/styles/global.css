@@ -123,29 +123,19 @@
   --color-ui-bullet: rgb(42 42 42 / 0.18);
   --shadow-hero-soft: 0 24px 48px -18px rgb(0 0 0 / 0.18);
 }
-
-/* HeroSlider */
+/* Hero swiper */
 .hero-slider-bullet {
   width: 0.5rem;
   height: 0.5rem;
-  border-radius: 9999px;
-  background: var(--color-ui-bullet);
-  transition:
-    width 0.25s ease,
+
+@@ -135,17 +130,8 @@
     background-color 0.25s ease,
     transform 0.25s ease;
 }
  
+
 .hero-pagination .swiper-pagination-bullet-active {
   width: 1.5rem;
   background: var(--color-brand-primary);
-}
- 
-.hero-swiper .swiper-slide {
-  opacity: 0;
-  transition: opacity 0.45s ease;
-}
- 
-.hero-swiper .swiper-slide-active {
-  opacity: 1;
+
 }
