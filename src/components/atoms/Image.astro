@@ -1,0 +1,89 @@
+---
+import { Image as AstroImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  src: ImageMetadata;
+  alt: string;
+  title?: string;
+  href?: string;
+  variant?: "decorator" | "basic";
+  class?: string;
+  imageClass?: string;
+  priority?: boolean;
+}
+
+const {
+  src,
+  alt,
+  title,
+  href,
+  variant = "decorator",
+  class: className = "",
+  imageClass = "",
+  priority = false,
+  ...rest
+} = Astro.props;
+
+const isLink = Boolean(href);
+const wrapperClass = variant === "decorator" ? "hero-decorator p-4" : "hero-basic";
+---
+
+<div class={`group relative w-full ${wrapperClass} ${className}`} {...rest}>
+  {variant === "decorator" && (
+    <>
+      <div class="hero-bg-outer pointer-events-none absolute inset-0 rounded-2xl bg-brand-primary/20"></div>
+      <div class="hero-bg-inner pointer-events-none absolute inset-4 rounded-2xl bg-brand-secondary/10"></div>
+    </>
+  )}
+
+  {isLink ? (
+    <a
+      href={href}
+      class="relative block overflow-hidden rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/60"
+    >
+      <div class="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-image">
+        <AstroImage
+          src={src}
+          alt={alt}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          class={`hero-img block h-full w-full object-cover ${imageClass}`}
+        />
+
+        {title && (
+          <div class="pointer-events-none absolute bottom-0 left-0 right-0 p-4">
+            <div class="inline-block rounded-full bg-black/40 px-3 py-2 backdrop-blur-sm">
+              <span class="text-caption font-extrabold uppercase tracking-[0.12em] text-white">
+                {title}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+    </a>
+  ) : (
+    <div class="relative block overflow-hidden rounded-2xl">
+      <div class="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-image">
+        <AstroImage
+          src={src}
+          alt={alt}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          class={`hero-img block h-full w-full object-cover ${imageClass}`}
+        />
+
+        {title && (
+          <div class="pointer-events-none absolute bottom-0 left-0 right-0 p-4">
+            <div class="inline-block rounded-full bg-black/40 px-3 py-2 backdrop-blur-sm">
+              <span class="text-caption font-extrabold uppercase tracking-[0.12em] text-white">
+                {title}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )}
+</div>
