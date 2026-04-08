@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  title: string;
+  text: string;
+  variant?: "primary" | "secondary";
+  class?: string;
+}
+
+const {
+  title,
+  text,
+  variant = "primary",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const variantClasses = {
+  primary: "border-l-brand-primary [&_.icon-wrapper]:text-brand-primary",
+  secondary: "border-l-brand-secondary [&_.icon-wrapper]:text-brand-secondary",
+};
+---
+
+<div
+  class={`flex flex-col gap-3.5 rounded-2xl border-l-[3px] bg-ui-bg-light p-7 shadow-card transition-[box-shadow,transform] duration-[250ms] hover:-translate-y-0.5 hover:shadow-card-hover ${variantClasses[variant]} ${className}`}
+  {...rest}
+>
+  <div class="flex items-center gap-2.5">
+    <span class="icon-wrapper flex h-6 w-6 shrink-0 items-center justify-center">
+      <slot name="icon" />
+    </span>
+
+    <h3 class="m-0 text-[length:--text-size-card-title] font-bold text-ui-text-main">
+      {title}
+    </h3>
+  </div>
+
+  <p class="m-0 text-[length:--text-size-card-body] leading-[1.65] text-ui-text-muted">
+    {text}
+  </p>
+</div>
