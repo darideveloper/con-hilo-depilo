@@ -26,3 +26,9 @@ pnpm-debug.log*
 docs/
 .vercel
 .env*.local
+
+# Ignore proposals
+openspec/changes/*
+
+# Do not ignore archived proposals
+!openspec/changes/archive/
