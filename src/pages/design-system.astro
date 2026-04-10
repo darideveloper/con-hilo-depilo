@@ -1,16 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SectionHeader from "../components/SectionHeader.astro";
-import Button from "../components/Button.astro";
-import Badge from "../components/Badge.astro";
-import Icon from "../components/Icon.astro";
-import ServiceCard from "../components/ServiceCard.astro";
+import SectionHeader from "../components/molecules/SectionHeader.astro";
+import Button from "../components/atoms/Button.astro";
+import Badge from "../components/atoms/Badge.astro";
+import Icon from "../components/atoms/Icon.astro";
+import ServiceCard from "../components/molecules/ServiceCard.astro";
 import { getCollection } from "astro:content";
-import HeroImage from "../components/HeroImage.astro";
+import HeroImage from "../components/molecules/HeroImage.astro";
 import placeholderImg from "../assets/images/hero.png";
-import InfoCard from "../components/InfoCard.astro";
-import { ReactIcon } from "../components/ReactIcon";
-import { ReactTest } from "../components/ReactTest";
+import InfoCard from "../components/molecules/InfoCard.astro";
+import { ReactIcon } from "../components/atoms/ReactIcon";
+import { ReactTest } from "../components/atoms/ReactTest";
 
 const services = await getCollection("services");
 const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
