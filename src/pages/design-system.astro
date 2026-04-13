@@ -13,6 +13,7 @@ import courseImg from "../assets/images/course/iniciacion-hilo.jpg";
 import InfoCard from "../components/molecules/InfoCard.astro";
 import { ReactIcon } from "../components/atoms/ReactIcon";
 import { ReactTest } from "../components/atoms/ReactTest";
+import { ServicesSlider } from "../components/organisms/ServicesSlider";
 
 const services = await getCollection("services");
 const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
@@ -668,6 +669,17 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
             </ServiceCard>
           </div>
         </div>
+      </section>
+
+      <!-- Services Slider Section -->
+      <section class="flex flex-col gap-8">
+        <h3
+          class="text-xl font-bold border-b pb-2 uppercase tracking-wider text-brand-secondary"
+        >
+          Services Slider
+        </h3>
+        
+        <ServicesSlider services={sortedServices} client:load />
       </section>
 
       <!-- Course Cards Section -->

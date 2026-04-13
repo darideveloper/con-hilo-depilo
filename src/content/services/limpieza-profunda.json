@@ -1,0 +1,9 @@
+{
+  "title": "Limpieza Profunda",
+  "price": "45€",
+  "duration": "75 min",
+  "description": "Extracción de impurezas y mascarilla hidratante para un cutis renovado y luminoso.",
+  "image": "../../assets/images/limpieza-hilo.jpg",
+  "category": "facial",
+  "order": 10
+}
