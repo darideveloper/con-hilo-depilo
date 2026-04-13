@@ -40,11 +40,12 @@ const { items = defaultGalleryData } = Astro.props;
 <section class="bg-brand-primary/5 py-20 px-6" id="resultados">
   <div class="container relative z-10 mx-auto">
     <div class="mb-16">
-      <SectionHeader
-        title="Resultados Reales"
-        subtitle="La sutileza es nuestra firma"
-        centered={true}
-      />
+      <slot name="header">
+        <SectionHeader centered={true}>
+          <Fragment slot="title">Resultados Reales</Fragment>
+          <Fragment slot="subtitle">La sutileza es nuestra firma</Fragment>
+        </SectionHeader>
+      </slot>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="space-y-4">

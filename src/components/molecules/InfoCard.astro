@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"div"> {
   title: string;
-  text: string;
+  text?: string;
   variant?: "primary" | "secondary" | "accent";
   class?: string;
 }
@@ -49,6 +49,6 @@ const variants = {
   <p
     class="text-[length:--text-size-card-body] leading-[1.65] text-ui-text-muted m-0"
   >
-    {text}
+    <slot>{text}</slot>
   </p>
 </div>

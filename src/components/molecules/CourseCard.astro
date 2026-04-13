@@ -8,7 +8,7 @@ interface Props {
   title: string;
   duration: string;
   level: string;
-  description: string;
+  description?: string;
   image: ImageMetadata;
   alt: string;
 }
@@ -40,7 +40,7 @@ const { title, duration, level, description, image, alt } = Astro.props;
       {duration}
     </div>
     <p class="text-sm text-ui-text-muted leading-relaxed flex-1">
-      {description}
+      <slot>{description}</slot>
     </p>
     <Button variant="outline" class="w-full mt-auto text-xs uppercase" href="#">
       Más Información

@@ -9,7 +9,7 @@ interface Props {
   title: string;
   price?: string;
   duration?: string;
-  description: string;
+  description?: string;
   image: ImageMetadata;
   category: string;
   class?: string;
@@ -68,7 +68,7 @@ const {
     </div>
 
     <p class="text-ui-text-muted flex-1">
-      {description}
+      <slot>{description}</slot>
     </p>
 
     <Button variant={variant} size="sm" class="w-full mt-auto uppercase">

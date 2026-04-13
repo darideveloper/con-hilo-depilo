@@ -424,7 +424,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
           Info Card
         </h3>
 
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <InfoCard
             title="¿Qué esperar?"
             text="Nuestra sesión comienza con un diagnóstico personalizado de visagismo para garantizar un resultado natural."
@@ -439,17 +439,17 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
           </InfoCard>
 
           <InfoCard
-            title="Cuidados Post"
-            text="Evitar el agua directa en las primeras 24h y aplicar nuestro sérum regenerador diario son pasos clave."
-            variant="primary"
+            title="Cuidados Post (con Slots)"
+            variant="secondary"
           >
             <ReactIcon slot="icon" name="LuShieldCheck" size={18} client:load />
+            Evitar el agua directa en las primeras <strong>24h</strong> y aplicar nuestro <a href="#" class="text-brand-primary underline underline-offset-4 font-bold">sérum regenerador</a> diario son pasos clave.
           </InfoCard>
 
           <InfoCard
             title="Duración"
             text="El tratamiento tiene una duración aproximada de 30 a 45 minutos dependiendo del área a tratar."
-            variant="primary"
+            variant="accent"
           >
             <ReactIcon slot="icon" name="LuClock" size={18} client:load />
           </InfoCard>
@@ -524,10 +524,14 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
           </div>
           <div class="p-6 bg-white rounded-xl border border-brand-primary/10">
             <SectionHeader
-              title="Centered Header"
               subtitle="Perfect for hero sections or main landing page dividers."
               centered={true}
-            />
+            >
+              <div slot="title" class="flex items-center gap-3">
+                <Icon name="Sparkles" size={24} class="text-brand-primary" />
+                <span>Centered Header with Slot</span>
+              </div>
+            </SectionHeader>
           </div>
         </div>
       </section>
