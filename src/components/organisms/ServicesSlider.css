@@ -8,3 +8,7 @@
   background-color: var(--color-brand-primary, #f3c6bf) !important;
   transform: scale(1.25);
 }
+
+.swiper-wrapper {
+  align-items: stretch;
+}

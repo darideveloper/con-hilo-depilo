@@ -1,12 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/organisms/HeroSection.astro';
-import ServicesGrid from '../components/organisms/ServicesGrid.astro';
+import { ServicesSlider } from '../components/organisms/ServicesSlider';
 import CoursesSection from '../components/organisms/CoursesSection.astro';
 import Gallery from '../components/organisms/Gallery.astro';
 import InfoCardSection from '../components/organisms/InfoCardSection.astro';
 import Footer from '../components/organisms/Footer.astro';
 import SectionHeader from '../components/molecules/SectionHeader.astro';
+import { getCollection } from "astro:content";
+
+const services = await getCollection("services");
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout>
@@ -15,11 +19,21 @@ import SectionHeader from '../components/molecules/SectionHeader.astro';
 		<HeroSection />
 
 		<!-- Services Section -->
-		<ServicesGrid>
-			<SectionHeader slot="header" centered={true}>
-				<Fragment slot="title">Nuestra Carta de Servicios</Fragment>
-			</SectionHeader>
-		</ServicesGrid>
+		<section id="servicios" class="py-24 bg-ui-bg-light relative overflow-hidden">
+			<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl"></div>
+			<div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl"></div>
+
+			<div class="container relative z-10 flex flex-col gap-12">
+				<div class="flex flex-col items-center gap-4">
+					<SectionHeader centered={true}>
+						<Fragment slot="title">Nuestra Carta de Servicios</Fragment>
+					</SectionHeader>
+					<span class="w-16 h-0.5 bg-brand-primary rounded-full"></span>
+				</div>
+
+				<ServicesSlider services={sortedServices} client:load />
+			</div>
+		</section>
 
 		<!-- Courses Section -->
 		<CoursesSection>

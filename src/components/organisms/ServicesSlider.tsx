@@ -107,8 +107,9 @@ export function ServicesSlider({ services, className }: Props) {
           className="w-full !pb-12"
         >
           {filteredServices.map((service) => (
-            <SwiperSlide key={service.id} className="h-auto">
+            <SwiperSlide key={service.id} className="!h-auto flex">
               <ServiceCard
+                className="w-full"
                 title={service.data.title}
                 price={service.data.price}
                 duration={service.data.duration}
