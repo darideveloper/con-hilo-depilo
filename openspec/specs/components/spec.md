@@ -52,9 +52,9 @@ Molecules and Organisms that display content such as titles, subtitles, or descr
 ### Requirement: Service Presentation
 The system MUST support a scalable React-based slider for services that includes category filtering.
 
-#### Scenario: `ServicesSlider` displays and filters services
-- **GIVEN** a list of services with categories
-- **WHEN** rendered in the `ServicesSlider` component
-- **THEN** it displays filter buttons for each unique category, plus an "All" option
-- **AND** it renders a Swiper slider containing only the services matching the selected category
+#### Scenario: `ServiceCard` and `CourseCard` hover zoom is isolated
+- **GIVEN** a `ServiceCard` or `CourseCard`
+- **WHEN** the user hovers over a specific card
+- **THEN** only the image within that specific card MUST scale
+- **AND** hovering over a parent container with a `group` class MUST NOT trigger the zoom effect for all nested cards
 

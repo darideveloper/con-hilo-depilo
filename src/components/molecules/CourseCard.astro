@@ -17,13 +17,13 @@ const { title, duration, level, description, image, alt } = Astro.props;
 ---
 
 <div
-  class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-brand-primary/10 flex flex-col"
+  class="group/card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-brand-primary/10 flex flex-col"
 >
   <div class="h-64 overflow-hidden relative">
     <Image
       src={image}
       alt={alt}
-      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
     />
     <div
       class="absolute top-4 right-4 bg-brand-primary text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"

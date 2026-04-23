@@ -56,7 +56,7 @@ export function ServiceCard({
   return (
     <article
       className={cn(
-        "group flex flex-col bg-white border border-brand-primary/10 overflow-hidden transition-all rounded-2xl shadow-sm hover:shadow-lg hover:cursor-crosshair h-full",
+        "group/card flex flex-col bg-white border border-brand-primary/10 overflow-hidden transition-all rounded-2xl shadow-sm hover:shadow-lg hover:cursor-crosshair h-full",
         className,
       )}
     >
@@ -75,7 +75,7 @@ export function ServiceCard({
         <img
           src={imgSrc}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
           loading="lazy"
         />
       </div>
