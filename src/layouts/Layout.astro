@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import clsx from "clsx";
 import Header from "../components/organisms/Header.astro";
+import Footer from "../components/organisms/Footer.astro";
 
 interface Props {
 	title?: string;
@@ -29,8 +30,11 @@ const {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 	</head>
-	<body class={clsx("min-h-full font-sans bg-ui-bg-light text-ui-text-main antialiased selection:bg-brand-primary/30", className)}>
+	<body class="min-h-full font-sans bg-ui-bg-light text-ui-text-main antialiased selection:bg-brand-primary/30">
 		<Header />
-		<slot />
+		<main class={className}>
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>

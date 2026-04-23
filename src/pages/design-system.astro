@@ -19,9 +19,8 @@ const services = await getCollection("services");
 const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Layout title="Design System | Con Hilo Depilo">
-  <main class="py-20">
-    <div class="container flex flex-col gap-20">
+<Layout title="Design System | Con Hilo Depilo" class="py-20">
+  <div class="container flex flex-col gap-20">
       <SectionHeader
         title="Design System"
         subtitle="Referencia visual de los componentes atómicos y variantes del proyecto."
@@ -820,5 +819,4 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
         </Button>
       </div>
     </div>
-  </main>
-</Layout>
+  </Layout>
