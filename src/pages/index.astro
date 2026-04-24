@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/organisms/HeroSection.astro';
-import { ServicesSlider } from '../components/organisms/ServicesSlider';
+import { CategoryShowcase } from '../components/organisms/CategoryShowcase';
 import CoursesSection from '../components/organisms/CoursesSection.astro';
 import Gallery from '../components/organisms/Gallery.astro';
 import InfoCardSection from '../components/organisms/InfoCardSection.astro';
 import SectionHeader from '../components/molecules/SectionHeader.astro';
-import { getServices } from "../lib/api/getServices";
+import { getServiceCategories } from "../lib/api/getServices";
 
-const services = await getServices();
+const categories = await getServiceCategories();
 ---
 
 <Layout>
@@ -28,7 +28,7 @@ const services = await getServices();
 				<span class="w-16 h-0.5 bg-brand-primary rounded-full"></span>
 			</div>
 
-			<ServicesSlider services={services} client:load />
+			<CategoryShowcase categories={categories} client:load />
 		</div>
 	</section>
 

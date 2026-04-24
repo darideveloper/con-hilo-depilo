@@ -50,11 +50,15 @@ Molecules and Organisms that display content such as titles, subtitles, or descr
 - **AND** it MUST support a `description` prop as a fallback
 
 ### Requirement: Service Presentation
-The system MUST support a scalable React-based slider for services that includes category filtering.
+The system SHALL present services grouped by their respective categories using an interactive card interface that aligns with the brand's visual identity.
 
-#### Scenario: `ServiceCard` and `CourseCard` hover zoom is isolated
-- **GIVEN** a `ServiceCard` or `CourseCard`
-- **WHEN** the user hovers over a specific card
-- **THEN** only the image within that specific card MUST scale
-- **AND** hovering over a parent container with a `group` class MUST NOT trigger the zoom effect for all nested cards
+#### Scenario: Browsing service categories
+- **WHEN** the user views the services section on the homepage
+- **THEN** they see a responsive grid of Category Cards.
+- AND each card displays the category's image, title, and description.
+
+#### Scenario: Inspecting specific services
+- **WHEN** the user interacts with a Category Card
+- **THEN** they can select from a list of nested services rendered as interactive pills.
+- AND selecting a service dynamically updates the card to display the specific price and duration for that service.
 
