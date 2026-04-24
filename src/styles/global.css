@@ -37,6 +37,18 @@
 }
 
 @layer base {
+  .markdown ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .markdown li {
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
   h1 {
     font-size: var(--font-size-display);
     line-height: 1.1;

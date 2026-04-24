@@ -78,7 +78,7 @@ const parsedDescription = description ? marked.parse(description) : "";
       }
     </div>
 
-    <div class="text-ui-text-muted flex-1 text-sm prose prose-sm prose-p:my-1 prose-ul:my-1 prose-li:list-disc prose-li:ml-4">
+    <div class="markdown text-ui-text-muted flex-1 text-sm prose prose-sm prose-p:my-1 prose-ul:my-1 prose-li:list-disc prose-li:ml-4">
       {
         parsedDescription ? (
           <Fragment set:html={parsedDescription} />
