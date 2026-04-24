@@ -2,36 +2,9 @@
 import SectionHeader from "../molecules/SectionHeader.astro";
 import CourseCard from "../molecules/CourseCard.astro";
 
-import imgIniciacion from "../../assets/images/course/iniciacion-hilo.jpg";
-import imgPerfeccionamiento from "../../assets/images/course/perfeccionamiento-cejas.jpg";
-import imgMasterclass from "../../assets/images/course/masterclass-lash.jpg";
+import { getCourses } from "../../lib/api/getCourses";
 
-const courses = [
-  {
-    title: "Iniciación al Hilo",
-    duration: "2 Días",
-    level: "Inicial",
-    description: "Domina la técnica ancestral del hilo desde cero. Teoría de visagismo y práctica intensiva en modelos reales.",
-    image: imgIniciacion,
-    alt: "Curso Iniciación al Hilo"
-  },
-  {
-    title: "Perfeccionamiento de Cejas",
-    duration: "1 Día",
-    level: "Avanzado",
-    description: "Para profesionales que buscan pulir su técnica, mejorar la velocidad y perfeccionar el acabado K-Beauty.",
-    image: imgPerfeccionamiento,
-    alt: "Curso Perfeccionamiento de Cejas"
-  },
-  {
-    title: "Masterclass Lash Lift",
-    duration: "1.5 Días",
-    level: "Experto",
-    description: "Especialización técnica en curvatura de pestañas. Protocolos de seguridad y química del tratamiento.",
-    image: imgMasterclass,
-    alt: "Curso Masterclass Lash Lift"
-  }
-];
+const courses = await getCourses();
 ---
 
 <section class="max-w-[1200px] mx-auto px-6 py-24" id="cursos">

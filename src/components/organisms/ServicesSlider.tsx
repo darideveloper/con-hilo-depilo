@@ -11,27 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./ServicesSlider.css";
 
-interface ImageMetadata {
-  src: string;
-  width: number;
-  height: number;
-  format: string;
-}
-
-interface ServiceData {
-  title: string;
-  price?: string;
-  duration?: string;
-  description?: string;
-  image: ImageMetadata | string;
-  category: string;
-  order?: number;
-}
-
-interface Service {
-  id: string;
-  data: ServiceData;
-}
+import type { Service } from "../../lib/api/types";
 
 interface Props {
   services: Service[];
@@ -43,14 +23,14 @@ export function ServicesSlider({ services, className }: Props) {
 
   // Extract unique categories
   const categories = useMemo(() => {
-    const cats = new Set(services.map((s) => s.data.category));
+    const cats = new Set(services.map((s) => s.category));
     return ["all", ...Array.from(cats)];
   }, [services]);
 
   // Filter services based on active category
   const filteredServices = useMemo(() => {
     if (activeCategory === "all") return services;
-    return services.filter((s) => s.data.category === activeCategory);
+    return services.filter((s) => s.category === activeCategory);
   }, [services, activeCategory]);
 
   return (
@@ -110,12 +90,12 @@ export function ServicesSlider({ services, className }: Props) {
             <SwiperSlide key={service.id} className="!h-auto flex">
               <ServiceCard
                 className="w-full"
-                title={service.data.title}
-                price={service.data.price}
-                duration={service.data.duration}
-                description={service.data.description}
-                image={service.data.image}
-                category={service.data.category}
+                title={service.title}
+                price={service.price}
+                duration={service.duration}
+                description={service.description}
+                image={service.image}
+                category={service.category}
                 variant="outline"
               />
             </SwiperSlide>

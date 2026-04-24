@@ -6,7 +6,7 @@ import Badge from "../components/atoms/Badge.astro";
 import Icon from "../components/atoms/Icon.astro";
 import ServiceCard from "../components/molecules/ServiceCard.astro";
 import CourseCard from "../components/molecules/CourseCard.astro";
-import { getCollection } from "astro:content";
+import { getServices } from "../lib/api/getServices";
 import HeroImage from "../components/molecules/HeroImage.astro";
 import placeholderImg from "../assets/images/hero.png";
 import courseImg from "../assets/images/course/iniciacion-hilo.jpg";
@@ -15,8 +15,8 @@ import { ReactIcon } from "../components/atoms/ReactIcon";
 import { ReactTest } from "../components/atoms/ReactTest";
 import { ServicesSlider } from "../components/organisms/ServicesSlider";
 
-const services = await getCollection("services");
-const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+const services = await getServices();
+const sortedServices = services.sort((a, b) => (a.order || 0) - (b.order || 0));
 ---
 
 <Layout title="Design System | Con Hilo Depilo" class="py-20">
@@ -627,7 +627,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
               category="cejas"
               price="Desde 15 €"
               duration="30 min"
-              image={sortedServices[0]?.data.image || placeholderImg}
+              image={sortedServices[0]?.image || placeholderImg}
               variant="outline"
             >
               Definición natural con técnica coreana para un arco perfecto.
@@ -644,7 +644,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
               category="pestanas"
               price="Desde 35 €"
               duration="45 min"
-              image={sortedServices[1]?.data.image || placeholderImg}
+              image={sortedServices[1]?.image || placeholderImg}
               variant="primary"
             >
               Eleva tus pestañas naturales con un efecto rizado y duradero.
@@ -661,7 +661,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
               category="facial"
               price="Desde 20 €"
               duration="20 min"
-              image={sortedServices[2]?.data.image || placeholderImg}
+              image={sortedServices[2]?.image || placeholderImg}
               variant="ghost"
             >
               Elimina el vello facial más fino de forma suave y precisa.

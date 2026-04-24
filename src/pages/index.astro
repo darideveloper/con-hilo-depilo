@@ -6,10 +6,10 @@ import CoursesSection from '../components/organisms/CoursesSection.astro';
 import Gallery from '../components/organisms/Gallery.astro';
 import InfoCardSection from '../components/organisms/InfoCardSection.astro';
 import SectionHeader from '../components/molecules/SectionHeader.astro';
-import { getCollection } from "astro:content";
+import { getServices } from "../lib/api/getServices";
 
-const services = await getCollection("services");
-const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+const services = await getServices();
+const sortedServices = services.sort((a, b) => (a.order || 0) - (b.order || 0));
 ---
 
 <Layout>
