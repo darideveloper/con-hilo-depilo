@@ -4,13 +4,14 @@ import Button from "../atoms/Button.astro";
 import { marked } from "marked";
 
 interface Props {
+  id: number;
   title: string;
   duration: number;
   description?: string | null;
   image: string | null;
 }
 
-const { title, duration, description, image } = Astro.props;
+const { id, title, duration, description, image } = Astro.props;
 
 // format duration
 const hours = Math.floor(duration / 60);
@@ -44,7 +45,7 @@ const parsedDescription = description ? marked.parse(description) : "";
       <Icon name="Calendar" size={16} />
       {formattedDuration}
     </div>
-    <div class="text-sm text-ui-text-muted leading-relaxed flex-1 prose prose-sm prose-p:my-1 prose-ul:my-1">
+    <div class="text-sm text-ui-text-muted leading-relaxed flex-1 prose prose-sm prose-p:my-1 prose-ul:my-1 prose-li:list-disc prose-li:ml-4">
       {
         parsedDescription ? (
           <Fragment set:html={parsedDescription} />
@@ -53,8 +54,8 @@ const parsedDescription = description ? marked.parse(description) : "";
         )
       }
     </div>
-    <Button variant="outline" class="w-full mt-auto text-xs uppercase" href="#">
-      Más Información
+    <Button variant="outline" class="w-full mt-auto text-xs uppercase" href={`/booking/${id}`}>
+      Ver detalles y reservar
     </Button>
   </div>
 </div>

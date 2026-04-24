@@ -622,10 +622,11 @@ const services = await getServices();
               Variant: Outline (Default)
             </p>
             <ServiceCard
+              id={1}
               title="Diseño de Cejas"
               category="cejas"
               price="Desde 15 €"
-              duration="30 min"
+              duration={30}
               image={services[0]?.image || placeholderImg}
               variant="outline"
             >
@@ -639,10 +640,11 @@ const services = await getServices();
               Variant: Primary
             </p>
             <ServiceCard
+              id={2}
               title="Lifting de Pestañas"
               category="pestanas"
               price="Desde 35 €"
-              duration="45 min"
+              duration={45}
               image={services[1]?.image || placeholderImg}
               variant="primary"
             >
@@ -656,10 +658,11 @@ const services = await getServices();
               Variant: Ghost
             </p>
             <ServiceCard
+              id={3}
               title="Limpieza con Hilo"
               category="facial"
               price="Desde 20 €"
-              duration="20 min"
+              duration={20}
               image={services[2]?.image || placeholderImg}
               variant="ghost"
             >
@@ -690,11 +693,10 @@ const services = await getServices();
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
           <CourseCard
+            id={101}
             title="Iniciación al Hilo"
-            duration="8 Horas · 1 Jornada"
-            level="Básico"
+            duration={480}
             image={courseImg}
-            alt="Curso Iniciación"
           >
             Aprende la técnica milenaria de depilación con hilo desde cero.
           </CourseCard>

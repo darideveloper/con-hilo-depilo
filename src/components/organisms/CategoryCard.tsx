@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { cn } from "../../utils/cn";
 import { ReactIcon } from "../atoms/ReactIcon";
+import { marked } from "marked";
 import type { ServiceCategory, Service } from "../../lib/api/types";
 
 interface Props {
@@ -42,9 +43,10 @@ export function CategoryCard({ category, className }: Props) {
         {/* Category Header */}
         <div className="flex flex-col gap-2">
           <h3 className="text-xl font-bold text-ui-text-main">{category.name}</h3>
-          <p className="text-sm text-ui-text-muted leading-relaxed line-clamp-3">
-            {category.description}
-          </p>
+          <div 
+            className="text-sm text-ui-text-muted leading-relaxed line-clamp-3 prose prose-sm prose-p:my-0 prose-ul:my-0 prose-li:list-disc prose-li:ml-4"
+            dangerouslySetInnerHTML={{ __html: category.description ? marked.parse(category.description) as string : "" }}
+          />
         </div>
 
         {/* Service Selection */}
