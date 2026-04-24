@@ -1,27 +1,26 @@
-export interface ImageMetadata {
-  src: string;
-  width: number;
-  height: number;
-  format: string;
+export interface Service {
+  id: number;
+  title: string;
+  description: string | null;
+  price: string;
+  duration: number;
+  image: string | null;
+  category?: string;
 }
 
-export interface Service {
-  id: string;
-  title: string;
-  price?: string;
-  duration?: string;
-  description: string;
-  image: ImageMetadata | string;
-  category: string;
-  order?: number;
+export interface ServiceCategory {
+  id: number;
+  name: string;
+  description: string | null;
+  image: string | null;
+  services: Service[];
 }
 
 export interface Course {
-  id: string;
+  id: number;
   title: string;
-  duration: string;
-  level: string;
-  description: string;
-  image: ImageMetadata | string;
-  alt: string;
+  description: string | null;
+  price: string;
+  duration: number;
+  image: string | null;
 }

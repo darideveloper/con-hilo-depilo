@@ -16,7 +16,6 @@ import { ReactTest } from "../components/atoms/ReactTest";
 import { ServicesSlider } from "../components/organisms/ServicesSlider";
 
 const services = await getServices();
-const sortedServices = services.sort((a, b) => (a.order || 0) - (b.order || 0));
 ---
 
 <Layout title="Design System | Con Hilo Depilo" class="py-20">
@@ -627,7 +626,7 @@ const sortedServices = services.sort((a, b) => (a.order || 0) - (b.order || 0));
               category="cejas"
               price="Desde 15 €"
               duration="30 min"
-              image={sortedServices[0]?.image || placeholderImg}
+              image={services[0]?.image || placeholderImg}
               variant="outline"
             >
               Definición natural con técnica coreana para un arco perfecto.
@@ -644,7 +643,7 @@ const sortedServices = services.sort((a, b) => (a.order || 0) - (b.order || 0));
               category="pestanas"
               price="Desde 35 €"
               duration="45 min"
-              image={sortedServices[1]?.image || placeholderImg}
+              image={services[1]?.image || placeholderImg}
               variant="primary"
             >
               Eleva tus pestañas naturales con un efecto rizado y duradero.
@@ -661,7 +660,7 @@ const sortedServices = services.sort((a, b) => (a.order || 0) - (b.order || 0));
               category="facial"
               price="Desde 20 €"
               duration="20 min"
-              image={sortedServices[2]?.image || placeholderImg}
+              image={services[2]?.image || placeholderImg}
               variant="ghost"
             >
               Elimina el vello facial más fino de forma suave y precisa.
@@ -678,7 +677,7 @@ const sortedServices = services.sort((a, b) => (a.order || 0) - (b.order || 0));
           Services Slider
         </h3>
         
-        <ServicesSlider services={sortedServices} client:load />
+        <ServicesSlider services={services} client:load />
       </section>
 
       <!-- Course Cards Section -->

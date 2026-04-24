@@ -1,20 +1,13 @@
 import { cn } from "../../utils/cn";
 import { ReactIcon } from "../atoms/ReactIcon";
 
-interface ImageMetadata {
-  src: string;
-  width: number;
-  height: number;
-  format: string;
-}
-
 interface Props {
   title: string;
   price?: string;
-  duration?: string;
+  duration?: number;
   description?: React.ReactNode;
-  image: ImageMetadata | string;
-  category: string;
+  image: string | null;
+  category?: string;
   className?: string;
   variant?: "primary" | "outline" | "ghost";
 }
@@ -29,7 +22,7 @@ export function ServiceCard({
   className,
   variant = "outline",
 }: Props) {
-  const imgSrc = typeof image === "string" ? image : image.src;
+  const imgSrc = image || "";
 
   // Badge styles mapping
   const badgeVariants = {
@@ -72,23 +65,29 @@ export function ServiceCard({
             {price}
           </span>
         )}
-        <img
-          src={imgSrc}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
-          loading="lazy"
-        />
+        {imgSrc ? (
+          <img
+            src={imgSrc}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+            <ReactIcon name="LuImage" size={32} className="text-gray-300" />
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col flex-1 gap-3 p-6">
         <div className="flex flex-col gap-1">
           <h3 className="text-bold">{title}</h3>
-          {duration && (
+          {duration ? (
             <small className="flex items-center gap-1 text-ui-text-muted">
               <ReactIcon name="LuClock" size={14} />
-              {duration}
+              {duration} min
             </small>
-          )}
+          ) : null}
         </div>
 
         <p className="text-ui-text-muted flex-1">{description}</p>
