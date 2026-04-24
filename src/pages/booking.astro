@@ -1,0 +1,17 @@
+---
+/**
+ * Booking Redirect Page
+ * This page ensures that users are correctly funneled through the service selection.
+ * If an ID is provided via query parameter, it redirects to the dynamic booking page.
+ * Otherwise, it redirects to the homepage.
+ */
+
+const { searchParams } = Astro.url;
+const id = searchParams.get('id');
+
+if (id) {
+  return Astro.redirect(`/booking/${id}`);
+}
+
+return Astro.redirect('/');
+---

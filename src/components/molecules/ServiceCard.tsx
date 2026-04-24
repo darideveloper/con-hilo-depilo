@@ -49,7 +49,7 @@ export function ServiceCard({
   return (
     <article
       className={cn(
-        "group/card flex flex-col bg-white border border-brand-primary/10 overflow-hidden transition-all rounded-2xl shadow-sm hover:shadow-lg hover:cursor-crosshair h-full",
+        "group/card flex flex-col bg-white border border-brand-primary/10 overflow-hidden transition-all rounded-2xl shadow-sm hover:shadow-lg cursor-pointer h-full",
         className,
       )}
     >

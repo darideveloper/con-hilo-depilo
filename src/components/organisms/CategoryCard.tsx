@@ -58,7 +58,7 @@ export function CategoryCard({ category, className }: Props) {
                 key={service.id}
                 onClick={() => setSelectedService(service)}
                 className={cn(
-                  "px-3 py-2 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all border",
+                  "px-3 py-2 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all border cursor-pointer",
                   selectedService?.id === service.id
                     ? "bg-brand-primary text-ui-text-main border-brand-primary shadow-sm"
                     : "bg-ui-bg-light text-ui-text-muted border-brand-primary/10 hover:border-brand-primary/40"
@@ -83,7 +83,12 @@ export function CategoryCard({ category, className }: Props) {
               </small>
             </div>
             <button
-              className="bg-brand-primary text-ui-text-main px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary/90 transition-all hover:scale-[1.03] active:scale-95 shadow-sm"
+              onClick={() => {
+                if (selectedService) {
+                  window.location.href = `/booking/${selectedService.id}`;
+                }
+              }}
+              className="bg-brand-primary text-ui-text-main px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary/90 transition-all hover:scale-[1.03] active:scale-95 shadow-sm cursor-pointer"
             >
               Reservar
             </button>
