@@ -17,7 +17,7 @@ const courses = await getCourses();
     <div class="w-20 h-1 bg-brand-primary mx-auto rounded-full mt-4"></div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     {courses.map(course => (
       <CourseCard {...course}>
         {course.description}
