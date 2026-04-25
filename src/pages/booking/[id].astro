@@ -125,11 +125,27 @@ const bookingUrl = `${import.meta.env.PUBLIC_BOOKING_URL}/?service=${id}&lang=es
           </h2>
         </div>
         <iframe
+          id='booking-iframe'
           src={bookingUrl}
-          class='w-full h-full border-none relative z-10 min-h-[650px] lg:h-[850px] sticky top-8 group/iframe rounded-3xl'
+          class='w-full h-full border-none z-10 min-h-[680px] md:min-h-[750px] sticky top-8 group/iframe rounded-3xl overflow-y-hidden'
           title='Sistema de Reservas - Con Hilo Depilo'
           loading='lazy'
         ></iframe>
+        <script>
+          const iframe = document.getElementById(
+            'booking-iframe',
+          ) as HTMLIFrameElement
+          const width = window.innerWidth
+          let zoom = 100
+          if (width < 768) {
+            zoom = 80
+          } else if (width >= 1024) {
+            zoom = 110
+          }
+          if (iframe && iframe.src) {
+            iframe.src += `&zoom=${zoom}`
+          }
+        </script>
       </div>
     </div>
   </section>
