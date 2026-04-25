@@ -37,6 +37,26 @@
 }
 
 @layer base {
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-ui-bg-light);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-brand-primary);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-ui-bg-light);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-secondary);
+  }
+
   .markdown ul {
     list-style: disc;
     padding-left: 1.5rem;
